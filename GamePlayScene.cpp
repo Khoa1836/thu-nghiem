@@ -14,5 +14,5 @@ GamePlayScene::GamePlayScene() {
     ));
     
     // add player
-	gameObjects.push_back(std::make_shared<Player>());
+	gameObjects.push_back(GameObjectFactory::createPlayer());
 }

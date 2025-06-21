@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include "GameObject.h"
+#include "GameObjectFactory.h"
 
 class Scene {
 protected:

@@ -9,7 +9,5 @@ class Player : public GameObject
 public:
 	Player();
 	virtual ~Player();
-
-	void update(float deltaTime) override;
 };
 
