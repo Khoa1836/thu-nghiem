@@ -1,5 +1,6 @@
 ﻿#include "KeyboardMove.h"
 #include <SFML/Window/Keyboard.hpp>
+#include "CollideWithBounds.h"
 
 KeyboardMove::KeyboardMove(std::shared_ptr<GameObject> owner, float speed)
     : Component(owner),
