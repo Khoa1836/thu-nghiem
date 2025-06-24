@@ -4,6 +4,8 @@
 #include "Config.h"
 #include "KeyboardMove.h"
 #include "CollideWithBounds.h"
+#include "Gravity.h"
+#include "Stat.h"
 
 class GameObjectFactory
 {

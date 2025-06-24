@@ -8,6 +8,5 @@ SwitchSceneCommand::SwitchSceneCommand(std::function<std::shared_ptr<Scene>()> f
 }
 
 void SwitchSceneCommand::execute() {
-    std::cout << "Switching scene...\n";
     GameManager::getInstance().setScene(createScene());
 }

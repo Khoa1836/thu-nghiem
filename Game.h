@@ -10,7 +10,7 @@ class Game
 {
 private:
 	sf::RenderWindow* window;
-	
+
 	void pollEvent();
 	void updateMousePosition();
 public:

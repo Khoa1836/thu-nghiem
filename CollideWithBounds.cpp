@@ -6,6 +6,11 @@ CollideWithBounds::CollideWithBounds(std::shared_ptr<GameObject> owner) :
 {
 }
 
+void CollideWithBounds::sayHello()
+{
+	std::cout << "hello";
+}
+
 void CollideWithBounds::update(float deltaTime)
 {
 	if (!owner) return;

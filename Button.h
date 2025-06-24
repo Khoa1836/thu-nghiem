@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "ICommand.h"
 #include "Config.h"
+#include "GameManager.h"
 
 class Button : public GameObject {
 private:

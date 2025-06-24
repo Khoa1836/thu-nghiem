@@ -11,7 +11,7 @@ Button::Button(const std::string& text, float x, float y, std::shared_ptr<IComma
 }
 
 void Button::update(float deltaTime) {
-    bool mouseNowDown = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+    bool mouseNowDown = GameManager::getInstance().isMousePressed();
     sf::Vector2f mousePos = mousePosition;
     sf::Vector2f posF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 

@@ -23,11 +23,13 @@
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Ememies.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GamePlayScene.cpp" />
+    <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="KeyboardMove.cpp" />
     <ClCompile Include="MenuScene.cpp" />
@@ -36,6 +38,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
+    <ClCompile Include="Stat.cpp" />
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +46,13 @@
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Ememies.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GamePlayScene.h" />
+    <ClInclude Include="Gravity.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="KeyboardMove.h" />
     <ClInclude Include="MenuScene.h" />
@@ -55,6 +60,7 @@
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SelectLevelScene.h" />
+    <ClInclude Include="Stat.h" />
     <ClInclude Include="SwitchSceneCommand.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -7,6 +7,8 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer()
 	// bật tắt tùy ý các hành vi (component)
 	player->addComponent(std::make_shared<KeyboardMove>(player, PLAYER_SPEED));
 	player->addComponent(std::make_shared<CollideWithBounds>(player));
+	player->addComponent(std::make_shared<Gravity>(player));
+	player->addComponent(std::make_shared<Stat>(player));
 
 	return player;
 }

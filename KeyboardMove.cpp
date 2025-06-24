@@ -26,3 +26,4 @@ void KeyboardMove::update(float deltaTime)
 
     this->owner->move(movement);
 }
+

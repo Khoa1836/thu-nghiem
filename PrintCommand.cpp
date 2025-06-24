@@ -8,4 +8,4 @@ PrintCommand::PrintCommand(std::string message) :
 void PrintCommand::execute()
 {
 	std::cout << this->message << '\n';
-}
+} 

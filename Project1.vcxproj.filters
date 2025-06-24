@@ -74,6 +74,13 @@
     <ClCompile Include="CollideWithBounds.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Ememies.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Stat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -125,5 +132,12 @@
     <ClInclude Include="CollideWithBounds.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Ememies.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Stat.h" />
   </ItemGroup>
 </Project>
