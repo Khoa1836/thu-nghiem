@@ -1,34 +1,24 @@
-#include "Stat.h"
+﻿#include "Stat.h"
 #include "GameObject.h"
 
-Stat::Stat(std::shared_ptr<GameObject> owner, float health, float damage):
-	Component(owner),
-	health(health),
-	damage(damage)
+Stat::Stat(std::shared_ptr<GameObject> owner, float health, float damage) :
+	Component(owner), health(health), damage(damage)
 {
-	healthBar.setSize(sf::Vector2f(20.f, 100.f));
-	healthBar.setFillColor(sf::Color::Red);
-}
-
-Stat::Stat(std::shared_ptr<GameObject> owner, float health, float damage, sf::RectangleShape healthBar):
-Component(owner),
-health(health),
-damage(damage)
-{
-	healthBar.setSize(sf::Vector2f(20.f, 100.f));
-	healthBar.setFillColor(sf::Color::Red);
+	this->healthBar.setSize(sf::Vector2f(100, 20));
+	this->healthBar.setFillColor(sf::Color::Red);
 }
 
 void Stat::update(float deltaTime)
 {
 	auto hitbox = this->owner->getHitbox();
 	sf::Vector2f position;
-	position.x = hitbox.getPosition().x + hitbox.getSize().x/2 - healthBar.getSize().x/2;
-	position.y = hitbox.getPosition().y - 30;
+	position.x = hitbox.getPosition().x + hitbox.getSize().x / 2 - this->healthBar.getSize().x / 2;
+	position.y = hitbox.getPosition().y - this->healthBar.getSize().y - 5;
 
+	this->healthBar.setPosition(position);
 }
 
-//void Stat::render(sf::RenderWindow& window)
-//{
-//	window.draw(healthBar);
-//}
+void Stat::render(sf::RenderWindow& window)
+{
+	window.draw(this->healthBar);
+}

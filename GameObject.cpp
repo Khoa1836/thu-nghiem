@@ -42,8 +42,11 @@ void GameObject::update(float deltaTime)
 void GameObject::render(sf::RenderWindow& window)
 {
 	window.draw(this->hitbox);
-	/*if (this->getComponent<Stat>())
-	{*/
-	/*	this->getComponent<Stat>()->render(window);*/
-	//}
+	for (const auto& component : this->components)
+	{
+		if (component)
+		{
+			component->render(window);
+		}
+	}
 }

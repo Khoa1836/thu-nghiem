@@ -14,6 +14,7 @@ public:
     Component(std::shared_ptr<GameObject> owner) : owner(owner) {}
     virtual ~Component() = default;
     virtual void update(float deltaTime) = 0;
+    virtual void render(sf::RenderWindow& window) {}
 };
 
 // Component Pattern for game objects' behavior
