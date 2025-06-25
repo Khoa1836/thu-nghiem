@@ -23,7 +23,7 @@
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="Ememies.cpp" />
+    <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -46,7 +46,7 @@
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="Ememies.h" />
+    <ClInclude Include="Enemies.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />

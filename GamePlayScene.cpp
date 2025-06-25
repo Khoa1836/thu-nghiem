@@ -15,4 +15,5 @@ GamePlayScene::GamePlayScene() {
     
     // add player
 	gameObjects.push_back(GameObjectFactory::createPlayer());
+    gameObjects.push_back(GameObjectFactory::createEnemy());
 }
