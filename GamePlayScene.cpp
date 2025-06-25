@@ -7,7 +7,7 @@
 
 GamePlayScene::GamePlayScene() {
     gameObjects.push_back(std::make_shared<Button>(
-        "Back", 400, 400,
+        "Back", 100, 600, sf::Vector2f(50.f, 50.f),
         std::make_shared<SwitchSceneCommand>([]() {
             return std::make_shared<SelectLevelScene>();
             })

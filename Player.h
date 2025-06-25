@@ -11,5 +11,6 @@ public:
 	Player();
 	virtual ~Player();
 
+	void getPositionPlayer();
 };
 

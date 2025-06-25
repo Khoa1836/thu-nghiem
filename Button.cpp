@@ -1,9 +1,29 @@
 // Button.cpp
 #include "Button.h"
 
-Button::Button(const std::string& text, float x, float y, std::shared_ptr<ICommand> command)
+sf::Font Button::font;
+Button::Button(const std::string& n_text, float x, float y,sf::Vector2f size, std::shared_ptr<ICommand> command)
     : command(command) {
-    hitbox.setSize(sf::Vector2f(200.f, 50.f));
+    //text at button
+    static bool fontLoaded = false;
+    if (!fontLoaded) {
+        if (!font.loadFromFile("arial.ttf")) {
+            std::cout << "Khong load duoc font" << std::endl;
+        }
+        fontLoaded = true;
+    }
+    text.setFont(font);
+    text.setString(n_text);
+    text.setCharacterSize(30);
+    text.setFillColor(sf::Color::Red);
+
+    // can giua nut
+    sf::FloatRect textRect = text.getLocalBounds();
+    text.setOrigin(textRect.left + textRect.width / 2.0f,
+        textRect.top + textRect.height / 2.0f);
+    text.setPosition(x + size.x / 2.0f, y + size.y / 2.0f);
+    
+    hitbox.setSize(size);
     hitbox.setPosition(x, y);
     hitbox.setFillColor(sf::Color::Blue);
     hitbox.setOutlineThickness(2.f);
@@ -12,6 +32,7 @@ Button::Button(const std::string& text, float x, float y, std::shared_ptr<IComma
 
 void Button::update(float deltaTime) {
     bool mouseNowDown = GameManager::getInstance().isMousePressed();
+
     sf::Vector2f mousePos = mousePosition;
     sf::Vector2f posF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 
@@ -20,8 +41,10 @@ void Button::update(float deltaTime) {
             hitbox.setFillColor(sf::Color::Green);
             isHovered = true;
         }
-        if (mouseNowDown && !wasMouseDown && command)
+        if (mouseNowDown && !wasMouseDown && command) {
+            std::cout << "Button clicked: " << text.getString().toAnsiString() << std::endl;
             command->execute();
+        }
     }
     else {
         if (isHovered) {
@@ -34,4 +57,5 @@ void Button::update(float deltaTime) {
 
 void Button::render(sf::RenderWindow& window) {
     window.draw(hitbox);
+    window.draw(text);
 }

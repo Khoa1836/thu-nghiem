@@ -13,10 +13,13 @@ class Button : public GameObject {
 private:
     bool isHovered = false;
     bool wasMouseDown = false;
+
     std::shared_ptr<ICommand> command;
 
+    sf::Text text;
+    static sf::Font font;
 public:
-    Button(const std::string& text, float x, float y, std::shared_ptr<ICommand> command);
+    Button(const std::string& n_text, float x, float y,sf::Vector2f size, std::shared_ptr<ICommand> command);
 
     void update(float deltaTime) override;
     void render(sf::RenderWindow& window) override;

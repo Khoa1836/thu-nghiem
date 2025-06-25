@@ -3,7 +3,8 @@
 #include "GameManager.h"
 #include <iostream>
 
-SwitchSceneCommand::SwitchSceneCommand(std::function<std::shared_ptr<Scene>()> func)
+SwitchSceneCommand::SwitchSceneCommand
+(std::function<std::shared_ptr<Scene>()> func)
     : createScene(std::move(func)) {
 }
 
