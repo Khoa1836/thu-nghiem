@@ -20,10 +20,4 @@ public:
 	void takeDamage(float amount);
 	void update(float deltaTime) override;
 	void render(sf::RenderWindow& window) override;
-<<<<<<< hieu
-	void takeDamage(float amount);
 };
-
-=======
-};
->>>>>>> main
