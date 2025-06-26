@@ -1,4 +1,4 @@
-// GameManager.cpp
+﻿// GameManager.cpp
 #include "GameManager.h"
 
 GameManager::GameManager() {}
@@ -11,17 +11,7 @@ GameManager& GameManager::getInstance() {
 
 bool GameManager::isMousePressed()
 {
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    {
-        if (!holding)
-        {
-            return holding = true;
-
-        }
-        return false;
-    }
-    else
-        return holding = false;
+    return justPressed;
 }
 
 
@@ -35,9 +25,26 @@ std::shared_ptr<Scene> GameManager::getCurrentScene() {
 
 
 void GameManager::update(float deltaTime) {
-    if (currentScene) currentScene->update(deltaTime);
+    // Detect if the left mouse button is currently pressed
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        if (!holding) {
+            justPressed = true; 
+            holding = true;
+        }
+        else {
+            justPressed = false;
+        }
+    }
+    else {
+        holding = false;
+        justPressed = false;
+    }
+
+	this->getCurrentScene()->update(deltaTime);
 }
 
+
 void GameManager::render(sf::RenderWindow& window) {
-    if (currentScene) currentScene->render(window);
+	this->getCurrentScene()->render(window);
 }

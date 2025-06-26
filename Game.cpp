@@ -56,7 +56,8 @@ void Game::run()
 void Game::update(float deltaTime)
 {
 	this->updateMousePosition();
-	GameManager::getInstance().getCurrentScene()->update(deltaTime);
+	GameManager::getInstance().update(deltaTime);
+	//GameManager::getInstance().getCurrentScene()->update(deltaTime);
 }
 
 void Game::render(sf::RenderWindow& window)

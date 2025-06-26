@@ -12,12 +12,13 @@ private:
     GameManager& operator=(const GameManager&) = delete;
 
     bool holding = false;
+    bool justPressed = false;
 
 public:
     ~GameManager();
     static GameManager& getInstance();
         
-    bool isMousePressed();       
+    bool isMousePressed();
 
 
     void setScene(std::shared_ptr<Scene> scene);
