@@ -50,3 +50,9 @@ void GameObject::render(sf::RenderWindow& window)
 		}
 	}
 }
+
+void updateGameObjects(std::vector<std::shared_ptr<GameObject>>& gameObjects, float deltaTime)
+{
+	for (auto& obj : gameObjects)
+		obj->update(deltaTime);
+}

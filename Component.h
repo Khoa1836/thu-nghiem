@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Config.h"
+#include <functional>
 
 class GameObject;
 

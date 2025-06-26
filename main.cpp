@@ -8,4 +8,6 @@ int main()
 
 	return 0;
 }
-//hieu da sua			
+//hieu da sua		
+// triet da 
+	

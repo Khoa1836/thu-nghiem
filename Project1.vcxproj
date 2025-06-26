@@ -19,11 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ChasePlayerComponent.cpp" />
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Ememies.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -38,15 +41,19 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
+    <ClCompile Include="ShootComponent.cpp" />
     <ClCompile Include="Stat.cpp" />
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ChasePlayerComponent.h" />
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Ememies.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -60,6 +67,7 @@
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SelectLevelScene.h" />
+    <ClInclude Include="ShootComponent.h" />
     <ClInclude Include="Stat.h" />
     <ClInclude Include="SwitchSceneCommand.h" />
   </ItemGroup>

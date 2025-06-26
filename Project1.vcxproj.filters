@@ -81,6 +81,10 @@
       <Filter>Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="Stat.cpp" />
+    <ClCompile Include="ShootComponent.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="ChasePlayerComponent.cpp" />
+    <ClCompile Include="Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -139,5 +143,9 @@
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="Stat.h" />
+    <ClInclude Include="ShootComponent.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="ChasePlayerComponent.h" />
+    <ClInclude Include="Bullet.h" />
   </ItemGroup>
 </Project>
