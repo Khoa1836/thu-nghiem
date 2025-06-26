@@ -77,10 +77,15 @@
     <ClCompile Include="Gravity.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Ememies.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Stat.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageOnContact.cpp" />
+    <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="FollowTarget.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="NoOverlapEnemiesOnly.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,10 +142,15 @@
     <ClInclude Include="Gravity.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Ememies.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Stat.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageOnContact.h" />
+    <ClInclude Include="Enemies.h" />
+    <ClInclude Include="FollowTarget.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="NoOverlapEnemiesOnly.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

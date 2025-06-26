@@ -35,3 +35,13 @@ void Stat::render(sf::RenderWindow& window)
 {
 	window.draw(this->healthBar);
 }
+
+void Stat::takeDamage(float amount)
+{
+    health -= amount;
+    if (health < 0) health = 0;
+
+	float percent = health / 100.f;
+	if (percent < 0) percent = 0;
+	healthBar.setSize(sf::Vector2f(100 * percent, 20));
+}
