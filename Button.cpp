@@ -32,7 +32,6 @@ Button::Button(const std::string& n_text, float x, float y, sf::Vector2f size, s
 
 void Button::update(float deltaTime) {
 	bool mouseNowDown = GameManager::getInstance().isMousePressed();
-	if (mouseNowDown) std::cout << "Mouse is pressed" << std::endl;
 
 	sf::Vector2f mousePos = mousePosition;
 
@@ -45,7 +44,6 @@ void Button::update(float deltaTime) {
 		}
 		if (mouseNowDown && command) 
 		{
-			std::cout << "Button clicked: " << text.getString().toAnsiString() << std::endl;
 			command->execute();
 		}
 	}

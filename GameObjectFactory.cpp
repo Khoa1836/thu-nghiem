@@ -18,7 +18,7 @@ std::shared_ptr<Enemies> GameObjectFactory::createEnemy()
 	auto enemies = std::make_shared<Enemies>();
 
 	// bật tắt tùy ý các hành vi (component)
-	//enemies->addComponent(std::make_shared<KeyboardMove>(enemies, PLAYER_SPEED));
+	enemies->addComponent(std::make_shared<KeyboardMove>(enemies, PLAYER_SPEED, "arrows"));
 	enemies->addComponent(std::make_shared<CollideWithBounds>(enemies));
 	//player->addComponent(std::make_shared<Gravity>(player));
 	enemies->addComponent(std::make_shared<Stat>(enemies, 100, 20));
