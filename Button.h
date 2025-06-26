@@ -12,7 +12,6 @@
 class Button : public GameObject {
 private:
     bool isHovered = false;
-    bool wasMouseDown = false;
 
     std::shared_ptr<ICommand> command;
 

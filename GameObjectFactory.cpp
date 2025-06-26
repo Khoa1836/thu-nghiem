@@ -25,5 +25,5 @@ std::shared_ptr<Enemies> GameObjectFactory::createEnemy()
 
 	return enemies;
 }
-https://github.com/Khoa1836/thu-nghiem.git
-https://github.com/Khoa1836/thu-nghiem.git
+//https://github.com/Khoa1836/thu-nghiem.git
+//https://github.com/Khoa1836/thu-nghiem.git
