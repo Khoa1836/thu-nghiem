@@ -34,7 +34,7 @@ void CollideWithBullet::update(float deltaTime)
 				//bullet->markForDestroy();
 				// Nếu máu <= 0, có thể gọi: enemy->markForDestroy();
 			}
-			
+
 		}
 	}
 }
