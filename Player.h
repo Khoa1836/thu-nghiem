@@ -10,5 +10,6 @@ class Player : public GameObject
 public:
 	Player();
 	virtual ~Player();
+	/*void getPositionPlayer();*/
 
 };
