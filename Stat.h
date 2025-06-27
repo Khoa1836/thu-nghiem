@@ -18,12 +18,12 @@ private:
 public:
 	Stat(std::shared_ptr<GameObject> owner, float health = 100.f, float damage = 10.f);
 	void takeDamage(float amount);
+
+	float getHealth();
+	float getDamage();
+
 	void update(float deltaTime) override;
 	void render(sf::RenderWindow& window) override;
-<<<<<<< hieu
-	void takeDamage(float amount);
 };
 
-=======
-};
->>>>>>> main
+

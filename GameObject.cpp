@@ -50,3 +50,13 @@ void GameObject::render(sf::RenderWindow& window)
 		}
 	}
 }
+
+void GameObject::setTag(const std::string n_tag)
+{
+	this->tag = n_tag;
+}
+
+std::string GameObject::getTag()
+{
+	return this->tag;
+}

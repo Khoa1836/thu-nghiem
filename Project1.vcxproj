@@ -19,12 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollideWithBounds.cpp" />
+    <ClCompile Include="CollideWithBullet.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DamageOnContact.cpp" />
     <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="FireComponent.cpp" />
     <ClCompile Include="FollowTarget.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -45,12 +48,15 @@
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollideWithBounds.h" />
+    <ClInclude Include="CollideWithBullet.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DamageOnContact.h" />
     <ClInclude Include="Enemies.h" />
+    <ClInclude Include="FireComponent.h" />
     <ClInclude Include="FollowTarget.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />

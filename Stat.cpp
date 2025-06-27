@@ -13,17 +13,6 @@ Stat::Stat(std::shared_ptr<GameObject> owner, float health, float damage) :
 	offset = offset - hitbox.getPosition();
 }
 
-void Stat::takeDamage(float amount)
-{
-	health = std::max(health - amount, 0.f);
-
-	if (health == 0) std::cout << "Died\n";
-	else std::cout << "Health remain: " << health << std::endl;
-
-	//update health bar size
-	this->healthBar.setSize(sf::Vector2f(100 * (health / 100), 20));
-}
-
 void Stat::update(float deltaTime)
 {
 	auto hitbox = this->owner->getHitbox();
@@ -44,4 +33,14 @@ void Stat::takeDamage(float amount)
 	float percent = health / 100.f;
 	if (percent < 0) percent = 0;
 	healthBar.setSize(sf::Vector2f(100 * percent, 20));
+}
+
+float Stat::getHealth()
+{
+	return this->health;
+}
+
+float Stat::getDamage()
+{
+	return this->damage;
 }
