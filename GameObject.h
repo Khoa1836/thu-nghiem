@@ -9,7 +9,7 @@ class GameObject {
 protected:
     sf::RectangleShape hitbox;
 	std::vector<std::shared_ptr<Component>> components;
-
+    std::string tag;
 public:
     GameObject();
     virtual ~GameObject();
@@ -25,6 +25,11 @@ public:
 
     virtual void update(float deltaTime);
     virtual void render(sf::RenderWindow& window);
+
+    // Object with tag for easy differentiation
+    void setTag(const std::string n_tag); 
+    std::string getTag();
+
 };
 
 template<class T>

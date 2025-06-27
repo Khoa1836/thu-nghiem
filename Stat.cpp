@@ -45,3 +45,13 @@ void Stat::takeDamage(float amount)
 	if (percent < 0) percent = 0;
 	healthBar.setSize(sf::Vector2f(100 * percent, 20));
 }
+
+float Stat::getHealth()
+{
+	return this->health;
+}
+
+float Stat::getDamage()
+{
+	return this->damage;
+}
