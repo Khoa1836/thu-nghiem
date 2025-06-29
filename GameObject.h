@@ -10,6 +10,7 @@ protected:
     sf::RectangleShape hitbox;
 	std::vector<std::shared_ptr<Component>> components;
     std::string tag;
+    bool destroyed = false;
 public:
     GameObject();
     virtual ~GameObject();
@@ -30,6 +31,8 @@ public:
     void setTag(const std::string n_tag); 
     std::string getTag();
 
+    void markForDestroy() { destroyed = true; }
+    bool isDestroyed() const { return destroyed; }
 };
 
 template<class T>
