@@ -29,12 +29,13 @@ void CollideWithBullet::update(float deltaTime)
 				if (stat)
 				{
 					stat->takeDamage(damage);
+					if (stat->getHealth() <= 0.0f)
+					{
+						enemies->markForDestroy(); // Xóa enemy khi máu <= 0
+					}
 				}
-
-				//bullet->markForDestroy();
-				// Nếu máu <= 0, có thể gọi: enemy->markForDestroy();
+				bullet->markForDestroy(); // Đánh dấu đạn để xóa
 			}
-
 		}
 	}
 }

@@ -36,9 +36,18 @@ GamePlayScene::GamePlayScene() {
 }
 
 void GamePlayScene::update(float deltaTime) {
-    for (auto& obj : gameObjects) {
-        obj->update(deltaTime);
-    }
+    // Update all objects
+    for (auto& obj : gameObjects) obj->update(deltaTime);
+
+	// delete destroyed objects
+    gameObjects.erase(
+        std::remove_if(gameObjects.begin(), gameObjects.end(),
+            [](const std::shared_ptr<GameObject>& obj) {
+                return obj->isDestroyed();
+            }),
+        gameObjects.end()
+    );
+
     //add bullet to game
     for (auto& obj : toAddObjects) {
         obj->setTag("bullet");
