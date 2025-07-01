@@ -49,7 +49,10 @@ void FireComponent::update(float deltaTime)
                 velocity = dir * BULLET_VELOCITY;
             }
         }
-		toAddObjects->push_back(std::make_shared<Bullet>(velocity, pos));
+        float bulletDamage = 10.f;
+        auto stat = owner->getComponent<Stat>();
+        if (stat) bulletDamage = stat->getDamage();
+        toAddObjects->push_back(std::make_shared<Bullet>(velocity, pos, bulletDamage));
 	}
 }
 

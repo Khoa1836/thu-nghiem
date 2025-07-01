@@ -12,6 +12,7 @@
 #include "NoOverlapEnemiesOnly.h"
 #include "GameObject.h"
 #include "Bullet.h"
+#include "ShooterEnemy.h"
 
 class GameObjectFactory
 {
@@ -23,6 +24,10 @@ public:
 		std::shared_ptr<GameObject> player,
 		std::vector<std::shared_ptr<GameObject>>* gameObjects);
 	//static std::shared_ptr<Bullet> createBullet(sf::Vector2f pos, sf::Vector2f vel);
+	static std::shared_ptr<ShooterEnemy> createShooterEnemy(
+		std::shared_ptr<GameObject> player,
+		std::vector<std::shared_ptr<GameObject>>* gameObjects,
+		std::vector<std::shared_ptr<GameObject>>* toAddObjects);
 };
 
 // cái này là Factory Pattern để tạo ra các đối tượng GameObject

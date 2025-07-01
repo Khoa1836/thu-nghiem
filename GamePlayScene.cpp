@@ -21,6 +21,18 @@ void GamePlayScene::spawnRandomEnemy() {
     gameObjects.push_back(newEnemy);
 }
 
+void GamePlayScene::spawnRandomShooterEnemy(){
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> distX(0.f, 1230.f);
+    std::uniform_real_distribution<float> distY(0.f, 670.f);
+
+    auto player = gameObjects[1];
+    auto newShooter = GameObjectFactory::createShooterEnemy(player, &gameObjects, &toAddObjects);
+    newShooter->getHitbox().setPosition(distX(gen), distY(gen));
+    gameObjects.push_back(newShooter);
+}
+
 GamePlayScene::GamePlayScene() {
     gameObjects.push_back(std::make_shared<Button>(
         "Back", 100, 600, sf::Vector2f(50.f, 50.f),
@@ -50,7 +62,8 @@ void GamePlayScene::update(float deltaTime) {
 
     //add bullet to game
     for (auto& obj : toAddObjects) {
-        obj->setTag("bullet");
+        if (obj->getTag().empty()) // chỉ set tag nếu chưa có
+            obj->setTag("bullet");
         gameObjects.push_back(obj);
     }
     toAddObjects.clear();
@@ -59,7 +72,9 @@ void GamePlayScene::update(float deltaTime) {
     spawnTimer += deltaTime;
     if (spawnTimer >= 3.0f) {
         spawnTimer = 0.0f;
-        spawnRandomEnemy(); // Use helper for random enemy spawn
+        // Spawn cả enemy thường và shooter enemy mỗi lần
+        spawnRandomEnemy();
+        spawnRandomShooterEnemy();
     }
 }
 

@@ -101,6 +101,21 @@
     <ClCompile Include="CollideWithBullet.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="ShooterEnemy.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ShooterFireComponent.h">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ShooterFireComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletOfEnemy.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="CollideWithEnemyBullet.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -177,6 +192,15 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="CollideWithBullet.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ShooterEnemy.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletOfEnemy.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="CollideWithEnemyBullet.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
