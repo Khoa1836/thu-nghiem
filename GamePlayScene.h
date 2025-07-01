@@ -18,4 +18,5 @@ private:
     std::vector<std::shared_ptr<GameObject>> toAddObjects;
 
     void spawnRandomEnemy(); // Add this helper method
+    void spawnRandomShooterEnemy();
 };

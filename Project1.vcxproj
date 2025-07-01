@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletOfEnemy.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="CollideWithBullet.cpp" />
+    <ClCompile Include="CollideWithEnemyBullet.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DamageOnContact.cpp" />
@@ -44,14 +46,19 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
+    <ClCompile Include="ShooterEnemy.cpp" />
+    <ClCompile Include="ShooterFireComponent.cpp" />
+    <ClCompile Include="ShooterFireComponent.h" />
     <ClCompile Include="Stat.cpp" />
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletOfEnemy.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="CollideWithBullet.h" />
+    <ClInclude Include="CollideWithEnemyBullet.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DamageOnContact.h" />
@@ -72,6 +79,7 @@
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SelectLevelScene.h" />
+    <ClInclude Include="ShooterEnemy.h" />
     <ClInclude Include="Stat.h" />
     <ClInclude Include="SwitchSceneCommand.h" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿#include "CollideWithBullet.h"
 #include "GameObject.h"
 #include "Stat.h"
+#include "Bullet.h"
 
 CollideWithBullet::CollideWithBullet(std::shared_ptr<GameObject> owner,
 	std::vector<std::shared_ptr<GameObject>>* n_gameObjects,
@@ -12,29 +13,28 @@ CollideWithBullet::CollideWithBullet(std::shared_ptr<GameObject> owner,
 
 void CollideWithBullet::update(float deltaTime)
 {
-	auto stat = owner->getComponent<Stat>();
-	float damagePlayer = stat->getDamage();
-	damage = damagePlayer;
 	for (auto& bullet : *gameObjects)
 	{
-		if (bullet->getTag() != "bullet") continue;
+		if (bullet->getTag() != "bullet" || bullet->isDestroyed()) continue;
+		float damage = 10.f;
+		auto bulletPtr = std::dynamic_pointer_cast<Bullet>(bullet);
+		if (bulletPtr) {
+			damage = bulletPtr->getDamage();
+		}
 		for (auto& enemies : *gameObjects)
 		{
-			if (enemies->getTag() != "enemies") continue;
-			if (bullet->getHitbox().getGlobalBounds().
-				intersects(enemies->getHitbox().getGlobalBounds()))
+			if (enemies->getTag() != "enemies" || enemies->isDestroyed()) continue;
+			if (bullet->getHitbox().getGlobalBounds().intersects(enemies->getHitbox().getGlobalBounds()))
 			{
-				std::cout << "Bullet hit enemy!\n";
 				auto stat = enemies->getComponent<Stat>();
 				if (stat)
 				{
 					stat->takeDamage(damage);
 					if (stat->getHealth() <= 0.0f)
-					{
-						enemies->markForDestroy(); // Xóa enemy khi máu <= 0
-					}
+						enemies->markForDestroy();
 				}
-				bullet->markForDestroy(); // Đánh dấu đạn để xóa
+				bullet->markForDestroy();
+				break;
 			}
 		}
 	}
