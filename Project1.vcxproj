@@ -51,6 +51,7 @@
     <ClCompile Include="ShieldItem.cpp" />
     <ClCompile Include="ShooterEnemy.cpp" />
     <ClCompile Include="ShooterFireComponent.cpp" />
+    <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="Stat.cpp" />
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
@@ -85,6 +86,7 @@
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="ShieldItem.h" />
     <ClInclude Include="ShooterEnemy.h" />
+    <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="Stat.h" />
     <ClInclude Include="SwitchSceneCommand.h" />
   </ItemGroup>

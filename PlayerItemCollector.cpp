@@ -2,12 +2,13 @@
 #include "GameObject.h"
 #include "HealItem.h"
 #include "ShieldItem.h"
+#include "SpeedItem.h"
 #include "Stat.h"
 #include "Player.h"
 #include <iostream>
 
 PlayerItemCollector::PlayerItemCollector(std::shared_ptr<GameObject> owner, std::vector<std::shared_ptr<GameObject>>* gameObjects)
-    : Component(owner), gameObjects(gameObjects) {}
+    : Component(owner), gameObjects(gameObjects), shieldActive(false), shieldTimer(0.f), shieldDuration(0.f), speedActive(false), speedTimer(0.f), speedDuration(0.f), speedMultiplier(1.f) {}
 
 void PlayerItemCollector::update(float deltaTime)
 {
@@ -38,12 +39,32 @@ void PlayerItemCollector::update(float deltaTime)
                 obj->markForDestroy();
             }
         }
+        // SpeedItem: tăng tốc 5s
+        if (obj->getTag() == "speed" && owner->getHitbox().getGlobalBounds().intersects(obj->getHitbox().getGlobalBounds()))
+        {
+            auto speed = std::dynamic_pointer_cast<SpeedItem>(obj);
+            if (speed) {
+                speedActive = true;
+                speedTimer = 0.f;
+                speedDuration = speed->getSpeedDuration();
+                speedMultiplier = speed->getSpeedMultiplier();
+                obj->markForDestroy();
+            }
+        }
     }
     // Xử lý thời gian khiên bảo vệ
     if (shieldActive) {
         shieldTimer += deltaTime;
         if (shieldTimer >= shieldDuration) {
             shieldActive = false;
+        }
+    }
+    // Xử lý thời gian buff speed
+    if (speedActive) {
+        speedTimer += deltaTime;
+        if (speedTimer >= speedDuration) {
+            speedActive = false;
+            speedMultiplier = 1.f;
         }
     }
 }

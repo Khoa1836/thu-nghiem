@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "HealItem.h"
 #include "ShieldItem.h"
+#include "SpeedItem.h"
 #include <cstdlib>// rand
 #include "PlayerItemCollector.h"
 
@@ -43,10 +44,13 @@ void CollideWithBullet::update(float deltaTime)
 						float dropChance = 0.3f;
 						if (static_cast<float>(rand()) / RAND_MAX < dropChance)
 						{
-							if (rand() % 2 == 0)
+							int r = rand() % 3;
+							if (r == 0)
 								toAddObjects->push_back(std::make_shared<HealItem>(enemies->getHitbox().getPosition()));
-							else
+							else if (r == 1)
 								toAddObjects->push_back(std::make_shared<ShieldItem>(enemies->getHitbox().getPosition()));
+							else
+								toAddObjects->push_back(std::make_shared<SpeedItem>(enemies->getHitbox().getPosition()));
 						}
 						enemies->markForDestroy();
 					}
