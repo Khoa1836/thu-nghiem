@@ -2,7 +2,7 @@
 #include "GameObject.h"
 
 Stat::Stat(std::shared_ptr<GameObject> owner, float health, float damage) :
-	Component(owner), health(health), damage(damage)
+	Component(owner), health(health), maxHealth(health), damage(damage) // Gán maxHealth = health ban đầu
 {
 	this->healthBar.setSize(sf::Vector2f(100, 20));
 	this->healthBar.setFillColor(sf::Color::Red);
@@ -39,9 +39,10 @@ void Stat::render(sf::RenderWindow& window)
 void Stat::takeDamage(float amount)
 {
     health -= amount;
+    if (health > maxHealth) health = maxHealth; // Không vượt quá max
     if (health < 0) health = 0;
 
-	float percent = health / 100.f;
+	float percent = health / maxHealth;
 	if (percent < 0) percent = 0;
 	healthBar.setSize(sf::Vector2f(100 * percent, 20));
 }
@@ -54,4 +55,9 @@ float Stat::getHealth()
 float Stat::getDamage()
 {
 	return this->damage;
+}
+
+float Stat::getMaxHealth()
+{
+	return maxHealth;
 }
