@@ -1,4 +1,4 @@
-#include "PlayerItemCollector.h"
+﻿#include "PlayerItemCollector.h"
 #include "GameObject.h"
 #include "HealItem.h"
 #include "ShieldItem.h"
@@ -6,31 +6,38 @@
 #include "Player.h"
 #include <iostream>
 
+PlayerItemCollector::PlayerItemCollector(std::shared_ptr<GameObject> owner, std::vector<std::shared_ptr<GameObject>>* gameObjects)
+    : Component(owner), gameObjects(gameObjects) {}
+
 void PlayerItemCollector::update(float deltaTime)
 {
+    auto stat = owner->getComponent<Stat>();
     for (auto& obj : *gameObjects)
     {
+        // HealItem: hồi 30% máu tối đa
         if (obj->getTag() == "heal" && owner->getHitbox().getGlobalBounds().intersects(obj->getHitbox().getGlobalBounds()))
         {
             auto heal = std::dynamic_pointer_cast<HealItem>(obj);
-            if (heal) {
-                auto stat = owner->getComponent<Stat>();
-                if (stat) stat->takeDamage(-heal->getHealAmount()); // H?i m�u
+            if (heal && stat) {
+                float maxHealth = 100.f; // hoặc lấy từ Stat nếu có
+                float healAmount = maxHealth * 0.3f;
+                stat->takeDamage(-healAmount);
                 obj->markForDestroy();
             }
         }
+        // ShieldItem: khiên bảo vệ 5s
         if (obj->getTag() == "shield" && owner->getHitbox().getGlobalBounds().intersects(obj->getHitbox().getGlobalBounds()))
         {
             auto shield = std::dynamic_pointer_cast<ShieldItem>(obj);
             if (shield) {
                 shieldActive = true;
                 shieldTimer = 0.f;
-                shieldDuration = shield->getShieldDuration();
+                shieldDuration = 5.f; // hoặc shield->getShieldDuration();
                 obj->markForDestroy();
             }
         }
     }
-    // X? l� th?i gian khi�n b?o v?
+    // Xử lý thời gian khiên bảo vệ
     if (shieldActive) {
         shieldTimer += deltaTime;
         if (shieldTimer >= shieldDuration) {

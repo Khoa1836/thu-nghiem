@@ -4,7 +4,8 @@
 #include "Bullet.h"
 #include "HealItem.h"
 #include "ShieldItem.h"
-#include <cstdlib> // rand
+#include <cstdlib>// rand
+#include "PlayerItemCollector.h"
 
 CollideWithBullet::CollideWithBullet(std::shared_ptr<GameObject> owner,
 	std::vector<std::shared_ptr<GameObject>>* n_gameObjects,
@@ -32,7 +33,14 @@ void CollideWithBullet::update(float deltaTime)
 				auto stat = enemies->getComponent<Stat>();
 				if (stat)
 				{
-					stat->takeDamage(damage);
+					auto player = owner; // Assuming 'owner' is the player
+					auto collector = player->getComponent<PlayerItemCollector>();
+					if (collector && collector->isShieldActive()) {
+						// Bỏ qua sát thương
+					} else {
+						// Trừ máu bình thường
+						stat->takeDamage(damage);
+					}
 					if (stat->getHealth() <= 0.0f)
 					{
 						// 30% xác suất rớt buff

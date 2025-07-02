@@ -10,11 +10,11 @@
 class PlayerItemCollector : public Component
 {
 public:
-    PlayerItemCollector(std::shared_ptr<GameObject> owner, std::vector<std::shared_ptr<GameObject>>* gameObjects)
-        : Component(owner), gameObjects(gameObjects) {}
+    PlayerItemCollector(std::shared_ptr<GameObject> owner, std::vector<std::shared_ptr<GameObject>>* gameObjects);
 
-    void update(float deltaTime);
-    //bool isShieldActive() const { return shieldActive; }
+    void update(float deltaTime) override;
+
+    bool isShieldActive() const { return shieldActive; }
 
 private:
     std::vector<std::shared_ptr<GameObject>>* gameObjects;

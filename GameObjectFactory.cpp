@@ -5,6 +5,7 @@
 #include "ShooterEnemy.h"
 #include "ShooterFireComponent.h"
 #include "CollideWithEnemyBullet.h"
+#include "PlayerItemCollector.h"
 
 std::shared_ptr<Player> GameObjectFactory::createPlayer(
     std::vector<std::shared_ptr<GameObject>>* gameObjects,
@@ -25,6 +26,7 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer(
     );
     player->addComponent(fireComponent);
     player->addComponent(std::make_shared<CollideWithEnemyBullet>(player, gameObjects));
+    player->addComponent(std::make_shared<PlayerItemCollector>(player, gameObjects));
 
     return player;
 }
