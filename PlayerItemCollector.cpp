@@ -19,9 +19,11 @@ void PlayerItemCollector::update(float deltaTime)
         {
             auto heal = std::dynamic_pointer_cast<HealItem>(obj);
             if (heal && stat) {
-                float maxHealth = 100.f; // hoặc lấy từ Stat nếu có
+                float maxHealth = stat->getMaxHealth();
                 float healAmount = maxHealth * 0.3f;
-                stat->takeDamage(-healAmount);
+                float newHealth = stat->getHealth() + healAmount;
+                if (newHealth > maxHealth) healAmount = maxHealth - stat->getHealth();
+                if (healAmount > 0) stat->takeDamage(-healAmount);
                 obj->markForDestroy();
             }
         }

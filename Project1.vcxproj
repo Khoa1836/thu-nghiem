@@ -51,7 +51,6 @@
     <ClCompile Include="ShieldItem.cpp" />
     <ClCompile Include="ShooterEnemy.cpp" />
     <ClCompile Include="ShooterFireComponent.cpp" />
-    <ClCompile Include="ShooterFireComponent.h" />
     <ClCompile Include="Stat.cpp" />
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>

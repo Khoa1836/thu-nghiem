@@ -34,13 +34,9 @@ void CollideWithBullet::update(float deltaTime)
 				if (stat)
 				{
 					auto player = owner; // Assuming 'owner' is the player
-					auto collector = player->getComponent<PlayerItemCollector>();
-					if (collector && collector->isShieldActive()) {
-						// Bỏ qua sát thương
-					} else {
-						// Trừ máu bình thường
+					
 						stat->takeDamage(damage);
-					}
+					
 					if (stat->getHealth() <= 0.0f)
 					{
 						// 30% xác suất rớt buff
