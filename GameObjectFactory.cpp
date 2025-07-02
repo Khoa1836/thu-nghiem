@@ -18,12 +18,14 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer(
     player->addComponent(std::make_shared<Stat>(player, 100, 50));
 
     auto fireComponent = std::make_shared<FireComponent>(
+        player, gameObjects,toAddObjects,1.f,sf::Vector2f(0.f,-600.f));
         player,
         gameObjects,
         toAddObjects,
         0.8f,
         sf::Vector2f(0.f,-600.f)
     );
+
     player->addComponent(fireComponent);
     player->addComponent(std::make_shared<CollideWithEnemyBullet>(player, gameObjects));
     player->addComponent(std::make_shared<PlayerItemCollector>(player, gameObjects));

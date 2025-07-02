@@ -22,6 +22,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletOfEnemy.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="CollideWithBullet.cpp" />
     <ClCompile Include="CollideWithEnemyBullet.cpp" />
@@ -47,6 +48,8 @@
     <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneLose.cpp" />
+    <ClCompile Include="ScenePause.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
     <ClCompile Include="ShieldItem.cpp" />
     <ClCompile Include="ShooterEnemy.cpp" />
@@ -59,6 +62,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletOfEnemy.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Clock.h" />
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="CollideWithBullet.h" />
     <ClInclude Include="CollideWithEnemyBullet.h" />
@@ -83,6 +87,8 @@
     <ClInclude Include="PlayerItemCollector.h" />
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneLose.h" />
+    <ClInclude Include="ScenePause.h" />
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="ShieldItem.h" />
     <ClInclude Include="ShooterEnemy.h" />
