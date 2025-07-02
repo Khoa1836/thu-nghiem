@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletOfEnemy.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="CollideWithBullet.cpp" />
+    <ClCompile Include="CollideWithEnemyBullet.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DamageOnContact.cpp" />
@@ -36,26 +38,34 @@
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GamePlayScene.cpp" />
     <ClCompile Include="Gravity.cpp" />
+    <ClCompile Include="HealItem.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="KeyboardMove.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="NoOverlapEnemiesOnly.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerItemCollector.cpp" />
     <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneLose.cpp" />
     <ClCompile Include="ScenePause.cpp" />
     <ClCompile Include="SelectLevelScene.cpp" />
+    <ClCompile Include="ShieldItem.cpp" />
+    <ClCompile Include="ShooterEnemy.cpp" />
+    <ClCompile Include="ShooterFireComponent.cpp" />
+    <ClCompile Include="SpeedItem.cpp" />
     <ClCompile Include="Stat.cpp" />
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletOfEnemy.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="CollideWithBullet.h" />
+    <ClInclude Include="CollideWithEnemyBullet.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DamageOnContact.h" />
@@ -68,16 +78,21 @@
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GamePlayScene.h" />
     <ClInclude Include="Gravity.h" />
+    <ClInclude Include="HealItem.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="KeyboardMove.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="NoOverlapEnemiesOnly.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerItemCollector.h" />
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneLose.h" />
     <ClInclude Include="ScenePause.h" />
     <ClInclude Include="SelectLevelScene.h" />
+    <ClInclude Include="ShieldItem.h" />
+    <ClInclude Include="ShooterEnemy.h" />
+    <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="Stat.h" />
     <ClInclude Include="SwitchSceneCommand.h" />
   </ItemGroup>

@@ -33,4 +33,5 @@ private:
     std::shared_ptr<GameObject> findPlayer();
 
     std::shared_ptr<Clock> clockInGame; // Thay đổi từ ClockInGame sang Clock
+    void spawnRandomShooterEnemy();
 };

@@ -6,6 +6,7 @@ class Stat : public Component
 {
 private:
 	float health;
+	float maxHealth; // Thêm dòng này
 	float damage;
 
 	sf::Vector2f velocity;
@@ -20,6 +21,7 @@ public:
 	void takeDamage(float amount);
 
 	float getHealth();
+	float getMaxHealth(); // Thêm getter
 	float getDamage();
 
 	void update(float deltaTime) override;

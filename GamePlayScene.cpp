@@ -46,10 +46,25 @@ void GamePlayScene::spawnRandomEnemy() {
     std::uniform_real_distribution<float> distX(0.f, 1230.f); // 1280 
     std::uniform_real_distribution<float> distY(0.f, 670.f);  // 720 
 
+
     auto player = findPlayer(); // Sử dụng hàm tiện ích để lấy player
     auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects);
+    auto player = gameObjects[1];
+    auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
     newEnemy->getHitbox().setPosition(distX(gen), distY(gen));
     gameObjects.push_back(newEnemy);
+}
+
+void GamePlayScene::spawnRandomShooterEnemy(){
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> distX(0.f, 1230.f);
+    std::uniform_real_distribution<float> distY(0.f, 670.f);
+
+    auto player = gameObjects[1];
+    auto newShooter = GameObjectFactory::createShooterEnemy(player, &gameObjects, &toAddObjects);
+    newShooter->getHitbox().setPosition(distX(gen), distY(gen));
+    gameObjects.push_back(newShooter);
 }
 
 GamePlayScene::GamePlayScene() {
@@ -93,7 +108,8 @@ void GamePlayScene::update(float deltaTime) {
 
     //add bullet to game
     for (auto& obj : toAddObjects) {
-        obj->setTag("bullet");
+        if (obj->getTag().empty()) // chỉ set tag nếu chưa có
+            obj->setTag("bullet");
         gameObjects.push_back(obj);
     }
     toAddObjects.clear();
@@ -108,7 +124,9 @@ void GamePlayScene::update(float deltaTime) {
     spawnTimer += deltaTime;
     if (spawnTimer >= 3.0f) {
         spawnTimer = 0.0f;
-        spawnRandomEnemy(); // Use helper for random enemy spawn
+        // Spawn cả enemy thường và shooter enemy mỗi lần
+        spawnRandomEnemy();
+        spawnRandomShooterEnemy();
     }
 
     if (clockInGame && !clockInGame->isPaused()) clockInGame->update(deltaTime);

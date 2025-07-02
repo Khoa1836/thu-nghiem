@@ -1,6 +1,7 @@
-#include "DamageOnContact.h"
+﻿#include "DamageOnContact.h"
 #include "GameObject.h"
 #include "Stat.h"
+#include "PlayerItemCollector.h"
 
 DamageOnContact::DamageOnContact(std::shared_ptr<GameObject> owner, std::shared_ptr<GameObject> target, float damage, float cooldown)
     : Component(owner), target(target), damage(damage), cooldown(cooldown), timer(0.0f)
@@ -18,8 +19,13 @@ void DamageOnContact::update(float deltaTime)
     if (owner->getHitbox().getGlobalBounds().intersects(targetPtr->getHitbox().getGlobalBounds())) {
         auto stat = targetPtr->getComponent<Stat>();
         if (stat) {
-            stat->takeDamage(damage);
-            timer = cooldown;
+            auto collector = targetPtr->getComponent<PlayerItemCollector>();
+            if (collector && collector->isShieldActive()) {
+                // Bỏ qua sát thương
+            } else {
+                stat->takeDamage(damage);
+                timer = cooldown;
+            }
         }
     }
 }
