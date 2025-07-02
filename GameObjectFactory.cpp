@@ -12,12 +12,7 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer(
     player->addComponent(std::make_shared<Stat>(player, 100, 20));
 
     auto fireComponent = std::make_shared<FireComponent>(
-        player,
-        gameObjects,
-        toAddObjects,
-        1.f,
-        sf::Vector2f(0.f,-600.f)
-    );
+        player, gameObjects,toAddObjects,1.f,sf::Vector2f(0.f,-600.f));
     player->addComponent(fireComponent);
 
     return player;
