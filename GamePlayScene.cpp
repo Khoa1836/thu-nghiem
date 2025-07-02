@@ -48,8 +48,6 @@ void GamePlayScene::spawnRandomEnemy() {
 
 
     auto player = findPlayer(); // Sử dụng hàm tiện ích để lấy player
-    auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects);
-    auto player = gameObjects[1];
     auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
     newEnemy->getHitbox().setPosition(distX(gen), distY(gen));
     gameObjects.push_back(newEnemy);
@@ -61,7 +59,7 @@ void GamePlayScene::spawnRandomShooterEnemy(){
     std::uniform_real_distribution<float> distX(0.f, 1230.f);
     std::uniform_real_distribution<float> distY(0.f, 670.f);
 
-    auto player = gameObjects[1];
+    auto player = findPlayer();
     auto newShooter = GameObjectFactory::createShooterEnemy(player, &gameObjects, &toAddObjects);
     newShooter->getHitbox().setPosition(distX(gen), distY(gen));
     gameObjects.push_back(newShooter);
