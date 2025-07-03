@@ -23,6 +23,7 @@ public:
 	static std::shared_ptr<Enemies> createEnemy(
 		std::shared_ptr<GameObject> player,
 		std::vector<std::shared_ptr<GameObject>>* gameObjects,
+		std::vector<std::shared_ptr<GameObject>>* toAddObjects);
 	std::vector<std::shared_ptr<GameObject>>* toAddObjects);
 	//static std::shared_ptr<Bullet> createBullet(sf::Vector2f pos, sf::Vector2f vel);
 	static std::shared_ptr<ShooterEnemy> createShooterEnemy(

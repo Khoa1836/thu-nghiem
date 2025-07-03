@@ -7,6 +7,7 @@ private:
 	std::vector<std::shared_ptr<GameObject>>* toAddObjects;
 	std::shared_ptr<GameObject> bullet;
 	float damage;
+	std::vector<std::shared_ptr<GameObject>>* toAddObjects;
 public:
 	CollideWithBullet(std::shared_ptr<GameObject> owner,
 		std::vector<std::shared_ptr<GameObject>>* n_gameObjects,
@@ -14,6 +15,6 @@ public:
 		std::vector<std::shared_ptr<GameObject>>* n_toAddObjects);
 	virtual ~CollideWithBullet() = default;
 
-	void update(float deltaTime);
+	void update(float deltaTime) override;
 };
 

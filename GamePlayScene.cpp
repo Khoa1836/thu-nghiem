@@ -1,5 +1,7 @@
 ﻿// GamePlayScene.cpp
 #include <random>
+#include <vector>
+#include <memory>
 #include "GamePlayScene.h"
 #include "SelectLevelScene.h"
 #include "SwitchSceneCommand.h"
@@ -8,6 +10,9 @@
 #include "FollowTarget.h"
 #include "NoOverlapEnemiesOnly.h"
 #include "GameObject.h"
+
+
+std::vector<std::shared_ptr<GameObject>> toAddObjects;
 #include "ScenePause.h"
 #include "GameManager.h"
 #include "SceneLose.h"
@@ -46,6 +51,7 @@ void GamePlayScene::spawnRandomEnemy() {
     std::uniform_real_distribution<float> distX(0.f, 1230.f); // 1280 
     std::uniform_real_distribution<float> distY(0.f, 670.f);  // 720 
 
+    auto player = gameObjects[1];
 
     auto player = findPlayer(); // Sử dụng hàm tiện ích để lấy player
     auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
@@ -99,6 +105,7 @@ void GamePlayScene::update(float deltaTime) {
     gameObjects.erase(
         std::remove_if(gameObjects.begin(), gameObjects.end(),
             [](const std::shared_ptr<GameObject>& obj) {
+                if (obj->isDestroyed())
                 return obj->isDestroyed();
             }),
         gameObjects.end()
