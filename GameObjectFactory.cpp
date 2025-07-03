@@ -44,9 +44,6 @@ std::shared_ptr<Enemies> GameObjectFactory::createEnemy(
     std::shared_ptr<GameObject> player,
     std::vector<std::shared_ptr<GameObject>>* gameObjects, 
     std::vector<std::shared_ptr<GameObject>>* toAddObjects)
-std::shared_ptr<Enemies> GameObjectFactory::createEnemy(std::shared_ptr<GameObject> player,
-std::vector<std::shared_ptr<GameObject>>* gameObjects,
-std::vector<std::shared_ptr<GameObject>>* toAddObjects )
 {
 	auto enemies = std::make_shared<Enemies>();
     enemies->setTag("enemies");

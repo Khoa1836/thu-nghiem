@@ -51,8 +51,6 @@ void GamePlayScene::spawnRandomEnemy() {
     std::uniform_real_distribution<float> distX(0.f, 1230.f); // 1280 
     std::uniform_real_distribution<float> distY(0.f, 670.f);  // 720 
 
-    auto player = gameObjects[1];
-
     auto player = findPlayer(); // Sử dụng hàm tiện ích để lấy player
     auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
     newEnemy->getHitbox().setPosition(distX(gen), distY(gen));

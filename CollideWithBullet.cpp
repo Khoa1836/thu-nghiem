@@ -2,6 +2,9 @@
 #include "GameObject.h"
 #include "Stat.h"
 #include "Bullet.h"
+#include "HealItem.h"
+#include "ShieldItem.h"
+#include "SpeedItem.h"
 
 #include "Gem.h"
 
@@ -10,19 +13,6 @@ CollideWithBullet::CollideWithBullet(std::shared_ptr<GameObject> owner,
     float n_damage,
     std::vector<std::shared_ptr<GameObject>>* n_toAddObjects)
     : Component(owner), gameObjects(n_gameObjects), damage(n_damage), toAddObjects(n_toAddObjects)
-
-#include "HealItem.h"
-#include "ShieldItem.h"
-#include "SpeedItem.h"
-#include <cstdlib>// rand
-#include "PlayerItemCollector.h"
-
-CollideWithBullet::CollideWithBullet(std::shared_ptr<GameObject> owner,
-	std::vector<std::shared_ptr<GameObject>>* n_gameObjects,
-	float n_damage,
-	std::vector<std::shared_ptr<GameObject>>* n_toAddObjects)
-	: Component(owner), gameObjects(n_gameObjects), damage(n_damage), toAddObjects(n_toAddObjects)
-
 {
 }
 
