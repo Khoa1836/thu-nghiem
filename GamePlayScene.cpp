@@ -1,5 +1,7 @@
 ﻿// GamePlayScene.cpp
 #include <random>
+#include <vector>
+#include <memory>
 #include "GamePlayScene.h"
 #include "SelectLevelScene.h"
 #include "SwitchSceneCommand.h"
@@ -7,6 +9,9 @@
 #include "DamageOnContact.h"
 #include "FollowTarget.h"
 #include "NoOverlapEnemiesOnly.h"
+#include "GameObject.h"
+
+std::vector<std::shared_ptr<GameObject>> toAddObjects;
 
 // Helper function to spawn and randomize enemy position
 void GamePlayScene::spawnRandomEnemy() {
@@ -16,7 +21,7 @@ void GamePlayScene::spawnRandomEnemy() {
     std::uniform_real_distribution<float> distY(0.f, 670.f);  // 720 
 
     auto player = gameObjects[1];
-    auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects);
+    auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
     newEnemy->getHitbox().setPosition(distX(gen), distY(gen));
     gameObjects.push_back(newEnemy);
 }
@@ -55,6 +60,7 @@ void GamePlayScene::update(float deltaTime) {
     gameObjects.erase(
         std::remove_if(gameObjects.begin(), gameObjects.end(),
             [](const std::shared_ptr<GameObject>& obj) {
+                if (obj->isDestroyed())
                 return obj->isDestroyed();
             }),
         gameObjects.end()
