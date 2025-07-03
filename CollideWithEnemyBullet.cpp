@@ -1,8 +1,9 @@
-#include "CollideWithEnemyBullet.h"
+﻿#include "CollideWithEnemyBullet.h"
 #include "GameObject.h"
 #include "Stat.h"
 #include "BulletOfEnemy.h"
 #include <memory>
+#include "playeritemcollector.h"
 
 CollideWithEnemyBullet::CollideWithEnemyBullet(
     std::shared_ptr<GameObject> owner,
@@ -24,7 +25,17 @@ void CollideWithEnemyBullet::update(float deltaTime)
             float damage = 10.f;
             auto bulletPtr = std::dynamic_pointer_cast<BulletOfEnemy>(bullet);
             if (bulletPtr) damage = bulletPtr->getDamage();
-            stat->takeDamage(damage);
+
+            auto collector = owner->getComponent<PlayerItemCollector>();
+            if (collector && collector->isShieldActive())
+            {
+                // Bỏ qua sát thương
+            }
+            else
+            {
+                stat->takeDamage(damage);
+            }
+
             bullet->markForDestroy();
             std::cout << "Player hit by enemy bullet! HP: " << stat->getHealth() << std::endl;
         }

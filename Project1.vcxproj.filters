@@ -104,9 +104,6 @@
     <ClCompile Include="ShooterEnemy.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="ShooterFireComponent.h">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="ShooterFireComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -116,6 +113,10 @@
     <ClCompile Include="CollideWithEnemyBullet.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="HealItem.cpp" />
+    <ClCompile Include="PlayerItemCollector.cpp" />
+    <ClCompile Include="ShieldItem.cpp" />
+    <ClCompile Include="SpeedItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -203,5 +204,9 @@
     <ClInclude Include="CollideWithEnemyBullet.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="HealItem.h" />
+    <ClInclude Include="PlayerItemCollector.h" />
+    <ClInclude Include="ShieldItem.h" />
+    <ClInclude Include="SpeedItem.h" />
   </ItemGroup>
 </Project>

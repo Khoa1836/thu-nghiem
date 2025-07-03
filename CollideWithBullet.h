@@ -4,6 +4,7 @@ class CollideWithBullet : public Component
 {
 private:
 	std::vector<std::shared_ptr<GameObject>>* gameObjects;
+	std::vector<std::shared_ptr<GameObject>>* toAddObjects;
 	std::shared_ptr<GameObject> bullet;
 	float damage;
 	std::vector<std::shared_ptr<GameObject>>* toAddObjects;
