@@ -36,19 +36,22 @@ sf::RectangleShape& GameObject::getHitbox()
 
 void GameObject::update(float deltaTime)
 {
+    // Debug: Optionally log tag or type if needed
+    // std::cout << "[DEBUG] Updating GameObject: " << tag << std::endl;
 	this->updateComponents(deltaTime);
 }
 
 void GameObject::render(sf::RenderWindow& window)
 {
-	window.draw(this->hitbox);
-	for (const auto& component : this->components)
-	{
-		if (component)
-		{
-			component->render(window);
-		}
-	}
+    this->hitbox.setFillColor(sf::Color::Red); // Ensure the hitbox color is set before rendering
+    window.draw(this->hitbox);
+    for (const auto& component : this->components)
+    {
+        if (component)
+        {
+            component->render(window);
+        }
+    }
 }
 
 void GameObject::setTag(const std::string n_tag)

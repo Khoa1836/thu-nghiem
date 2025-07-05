@@ -44,8 +44,8 @@ void Game::run()
 	while (this->window->isOpen())
 	{
 		float deltaTime = clock.restart().asSeconds();
-		float FPS = 1 / deltaTime;
-		if (FPS < 30.f) continue;
+		//float FPS = 1 / deltaTime;
+		//if (FPS < 30.f) continue;
 
 		this->pollEvent();
 		this->update(deltaTime);

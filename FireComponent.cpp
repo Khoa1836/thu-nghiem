@@ -7,53 +7,43 @@
 FireComponent::FireComponent (std::shared_ptr<GameObject> owner,
     std::vector<std::shared_ptr<GameObject>>* n_gameObjects,
     std::vector<std::shared_ptr<GameObject>>* n_toAddObjects,
-    float n_fireCooldown, sf::Vector2f n_bulletVelocity )
+    float n_fireCooldown)
     : Component(owner),
     gameObjects(n_gameObjects),
     toAddObjects(n_toAddObjects),
-    n_bulletVelocity(n_bulletVelocity),
     fireCooldown(n_fireCooldown)
 {
 }
 
 void FireComponent::update(float deltaTime)
 {
-	timer += deltaTime;
-	if ( timer >= fireCooldown) {
-		timer = 0.f;
-        std::cout << "Fire!\n";
+    timer += deltaTime;
+    if ( timer >= fireCooldown) {
+        timer = 0.f;
 
-		auto pos = owner->getHitbox().getPosition();
+        auto pos = owner->getHitbox().getPosition();
         auto target = findClosestEnemy();
 
-        // Kiểm tra target và lấy component Stat nếu có
-       /* float healthTarget = 0.f;
-        //if (target) {
-            //auto stat = target->getComponent<Stat>();
-            //if (stat) {
-                //healthTarget = stat->getHealth();
-            //} 
-        //}*/
+        // Only fire if there is a valid enemy target
+        if (!target)
+            return;
 
-        sf::Vector2f velocity = n_bulletVelocity;
-
-        if (target)
+        auto targetPos = target->getHitbox().getPosition();
+        sf::Vector2f dir = targetPos - pos;
+        float length = std::sqrt(dir.x * dir.x + dir.y * dir.y);
+        sf::Vector2f velocity(0.f, 0.f);
+        if (length != 0)
         {
-            auto targetPos = target->getHitbox().getPosition();
-            sf::Vector2f dir = targetPos - pos;
-            float length = std::sqrt(dir.x * dir.x + dir.y * dir.y);
-            if (length != 0)
-            {
-                //chuan hoa cho viec ban enemies xa va gan voi cung van toc
-                dir /= length;
-                velocity = dir * BULLET_VELOCITY;
-            }
+            //chuan hoa cho viec ban enemies xa va gan voi cung van toc
+            dir /= length;
+            velocity = dir * BULLET_VELOCITY;
         }
+
         float bulletDamage = 10.f;
         auto stat = owner->getComponent<Stat>();
         if (stat) bulletDamage = stat->getDamage();
         toAddObjects->push_back(std::make_shared<Bullet>(velocity, pos, bulletDamage));
-	}
+    }
 }
 
 std::shared_ptr<GameObject> FireComponent::findClosestEnemy()
@@ -69,7 +59,7 @@ std::shared_ptr<GameObject> FireComponent::findClosestEnemy()
         // tránh trường hợp nhận chính nó dẫn đến dis = 0;
         if (obj.get() == owner.get()) continue;
 
-        if (obj->getTag() != "enemies") continue;
+        if (obj->getTag() != "default_enemies" && obj->getTag() != "shooter_enemies") continue;
         auto enemiesPos = obj->getHitbox().getPosition();
         float dx = enemiesPos.x - playerPos.x;
         float dy = enemiesPos.y - playerPos.y;

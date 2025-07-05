@@ -2,6 +2,7 @@
 #include <random>
 #include <vector>
 #include <memory>
+#include <iostream> 
 #include "GamePlayScene.h"
 #include "SelectLevelScene.h"
 #include "SwitchSceneCommand.h"
@@ -10,13 +11,14 @@
 #include "FollowTarget.h"
 #include "NoOverlapEnemiesOnly.h"
 #include "GameObject.h"
-
-
-std::vector<std::shared_ptr<GameObject>> toAddObjects;
 #include "ScenePause.h"
 #include "GameManager.h"
 #include "SceneLose.h"
 #include <sstream>
+#include <SFML/Graphics.hpp>
+
+sf::Font GamePlayScene::font;
+bool GamePlayScene::fontLoaded = false;
 
 // Hàm tiện ích để tìm player theo tag
 std::shared_ptr<GameObject> GamePlayScene::findPlayer() {
@@ -44,32 +46,29 @@ bool GamePlayScene::alivePlayer()
     return false;
 }
 
-// Helper function to spawn and randomize enemy position
-void GamePlayScene::spawnRandomEnemy() {
+// Helper function to spawn and randomize either default or shooter enemy
+void GamePlayScene::spawnRandomEnemy(bool isShooter) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
     std::uniform_real_distribution<float> distX(0.f, 1230.f); // 1280 
     std::uniform_real_distribution<float> distY(0.f, 670.f);  // 720 
 
     auto player = findPlayer(); // Sử dụng hàm tiện ích để lấy player
-    auto newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
+    std::shared_ptr<GameObject> newEnemy;
+    if (isShooter) {
+        newEnemy = GameObjectFactory::createShooterEnemy(player, &gameObjects, &toAddObjects);
+    } else {
+        newEnemy = GameObjectFactory::createEnemy(player, &gameObjects, &toAddObjects);
+    }
     newEnemy->getHitbox().setPosition(distX(gen), distY(gen));
     gameObjects.push_back(newEnemy);
 }
 
-void GamePlayScene::spawnRandomShooterEnemy(){
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    std::uniform_real_distribution<float> distX(0.f, 1230.f);
-    std::uniform_real_distribution<float> distY(0.f, 670.f);
-
-    auto player = findPlayer();
-    auto newShooter = GameObjectFactory::createShooterEnemy(player, &gameObjects, &toAddObjects);
-    newShooter->getHitbox().setPosition(distX(gen), distY(gen));
-    gameObjects.push_back(newShooter);
-}
-
 GamePlayScene::GamePlayScene() {
+    if (!fontLoaded) {
+        fontLoaded = font.loadFromFile("arial.ttf");
+    }
+
     // clock
     clockInGame = std::make_shared<Clock>();
 
@@ -92,24 +91,24 @@ GamePlayScene::GamePlayScene() {
     player->setTag("player"); // Đảm bảo player có tag là "player"
     gameObjects.push_back(player);
 
-    spawnRandomEnemy(); // Use helper for initial enemy
+    spawnRandomEnemy(false); // Use helper for initial enemy
 }
 
-void GamePlayScene::update(float deltaTime) {
+void GamePlayScene::update(float deltaTime) 
+{
     // Update all objects
     for (auto& obj : gameObjects) obj->update(deltaTime);
 
-	// delete destroyed objects
+    // delete destroyed objects
     gameObjects.erase(
         std::remove_if(gameObjects.begin(), gameObjects.end(),
             [](const std::shared_ptr<GameObject>& obj) {
-                if (obj->isDestroyed())
                 return obj->isDestroyed();
             }),
         gameObjects.end()
     );
 
-    //add bullet to game
+    // Add new objects, no bullet or enemy limit
     for (auto& obj : toAddObjects) {
         if (obj->getTag().empty()) // chỉ set tag nếu chưa có
             obj->setTag("bullet");
@@ -123,18 +122,16 @@ void GamePlayScene::update(float deltaTime) {
         return;
     }
 
-    //update enemy
+    // update enemy: always spawn every 3 seconds, no enemy count check
     spawnTimer += deltaTime;
     if (spawnTimer >= 3.0f) {
         spawnTimer = 0.0f;
-        // Spawn cả enemy thường và shooter enemy mỗi lần
-        spawnRandomEnemy();
-        spawnRandomShooterEnemy();
+        spawnRandomEnemy(false);  // spawn default enemy
+        spawnRandomEnemy(true);   // spawn shooter enemy
     }
 
     if (clockInGame && !clockInGame->isPaused()) clockInGame->update(deltaTime);
 }
-
 
 // clock and time
 float GamePlayScene::getElapsedTime() const {
@@ -159,11 +156,6 @@ void GamePlayScene::render(sf::RenderWindow& window) {
     }
 
     // Hiển thị thời gian chơi ở góc trên bên trái với định dạng MM:SS
-    static sf::Font font;
-    static bool fontLoaded = false;
-    if (!fontLoaded) {
-        fontLoaded = font.loadFromFile("arial.ttf"); // Đảm bảo file font tồn tại
-    }
     if (fontLoaded) {
         int elapsed = static_cast<int>(getElapsedTime());
         int minutes = elapsed / 60;

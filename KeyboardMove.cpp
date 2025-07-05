@@ -30,6 +30,13 @@ void KeyboardMove::update(float deltaTime)
 {
     if (!owner) return;
 
+    // Debug: Optionally log player position or movement
+    // if (owner->getTag() == "player") {
+    //     std::cout << "[DEBUG] Player position: " 
+    //               << owner->getHitbox().getPosition().x << ", "
+    //               << owner->getHitbox().getPosition().y << std::endl;
+    // }
+
     // Truy cập và di chuyển hitbox của GameObject
     sf::Vector2f movement(0.f, 0.f);
 

@@ -117,6 +117,24 @@
     <ClCompile Include="PlayerItemCollector.cpp" />
     <ClCompile Include="ShieldItem.cpp" />
     <ClCompile Include="SpeedItem.cpp" />
+    <ClCompile Include="Gem.cpp" />
+    <ClCompile Include="PlayerCollectGemComponent.cpp" />
+    <ClCompile Include="SceneLose.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePause.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultEnemy.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtils.cpp">
+      <Filter>No Category</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStat.cpp" />
+    <ClCompile Include="Clock.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -208,5 +226,23 @@
     <ClInclude Include="PlayerItemCollector.h" />
     <ClInclude Include="ShieldItem.h" />
     <ClInclude Include="SpeedItem.h" />
+    <ClInclude Include="Gem.h" />
+    <ClInclude Include="PlayerCollectGemComponent.h" />
+    <ClInclude Include="PlayerStat.h" />
+    <ClInclude Include="SceneLose.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePause.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultEnemy.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtils.h">
+      <Filter>No Category</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

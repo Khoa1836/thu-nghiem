@@ -30,6 +30,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DamageOnContact.cpp" />
     <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="DefaultEnemy.cpp" />
     <ClCompile Include="FireComponent.cpp" />
     <ClCompile Include="FollowTarget.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GamePlayScene.cpp" />
+    <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="Gem.cpp" />
     <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="HealItem.cpp" />
@@ -47,6 +49,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerCollectGemComponent.cpp" />
     <ClCompile Include="PlayerItemCollector.cpp" />
+    <ClCompile Include="PlayerStat.cpp" />
     <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="main.cpp" />
@@ -72,6 +75,7 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="DamageOnContact.h" />
     <ClInclude Include="Enemies.h" />
+    <ClInclude Include="DefaultEnemy.h" />
     <ClInclude Include="FireComponent.h" />
     <ClInclude Include="FollowTarget.h" />
     <ClInclude Include="Game.h" />
@@ -79,6 +83,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GamePlayScene.h" />
+    <ClInclude Include="GameUtils.h" />
     <ClInclude Include="Gem.h" />
     <ClInclude Include="Gravity.h" />
     <ClInclude Include="HealItem.h" />

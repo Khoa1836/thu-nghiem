@@ -24,14 +24,14 @@ public:
 
 private:
     float spawnTimer = 0.0f;
-
     std::vector<std::shared_ptr<GameObject>> toAddObjects;
 
-    void spawnRandomEnemy(); // Add this helper method
+    void spawnRandomEnemy(bool isShooter); // Add this helper method
 
     // Thêm hàm tiện ích để lấy player theo tag
     std::shared_ptr<GameObject> findPlayer();
 
     std::shared_ptr<Clock> clockInGame; // Thay đổi từ ClockInGame sang Clock
-    void spawnRandomShooterEnemy();
+    static sf::Font font;
+    static bool fontLoaded;
 };

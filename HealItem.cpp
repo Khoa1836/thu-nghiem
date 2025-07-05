@@ -10,7 +10,10 @@ HealItem::HealItem(sf::Vector2f pos, int heal)
     setTag("heal");
 }
 
-int HealItem::getHealAmount() const { return healAmount; }
+int HealItem::getHealAmount() const 
+{
+    return healAmount; 
+}
 
 void HealItem::update(float deltaTime) { /* Có thể thêm logic tự hủy sau X giây nếu muốn */ }
 
