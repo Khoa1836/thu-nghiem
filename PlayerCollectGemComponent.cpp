@@ -9,7 +9,7 @@ void PlayerCollectGemComponent::update(float deltaTime) {
     for (auto& obj : *gameObjects) {
         if (obj->getTag() != "gem" || obj->isDestroyed()) continue;
         if (obj->getHitbox().getGlobalBounds().intersects(owner->getHitbox().getGlobalBounds())) {
-            playerStat->addExp(20.f); // hoặc giá trị exp mong muốn
+            playerStat->addExp(20); // truyền số nguyên
             obj->markForDestroy();
             // Có thể thêm hiệu ứng hoặc log nếu muốn
         }
