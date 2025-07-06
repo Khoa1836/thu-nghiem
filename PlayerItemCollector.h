@@ -4,6 +4,7 @@
 #include "ShieldItem.h"
 #include "Stat.h"
 #include "GameObject.h"
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
 
@@ -13,6 +14,7 @@ public:
     PlayerItemCollector(std::shared_ptr<GameObject> owner, std::vector<std::shared_ptr<GameObject>>* gameObjects);
 
     void update(float deltaTime) override;
+    void render(sf::RenderWindow& window) override;
 
     bool isShieldActive() const { return shieldActive; }
     bool isSpeedActive() const { return speedActive; }
@@ -30,6 +32,14 @@ private:
     float speedDuration = 0.f;
     float speedMultiplier = 1.f;
 };
+
+
+
+
+
+
+
+
 
 
 
