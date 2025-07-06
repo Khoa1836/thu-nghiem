@@ -43,6 +43,7 @@ void Game::run()
 	sf::Clock clock;
 	while (this->window->isOpen())
 	{
+		//xu ly FPS
 		float deltaTime = clock.restart().asSeconds();
 		float FPS = 1 / deltaTime;
 		if (FPS < 30.f) continue;

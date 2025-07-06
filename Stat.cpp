@@ -4,8 +4,8 @@
 Stat::Stat(std::shared_ptr<GameObject> owner, float health, float damage) :
 	Component(owner), health(health), maxHealth(health), damage(damage) // Gán maxHealth = health ban đầu
 {
-	this->healthBar.setSize(sf::Vector2f(100, 20));
-	this->healthBar.setFillColor(sf::Color::Red);
+	this->healthBar.setSize(sf::Vector2f(50, 10));
+	this->healthBar.setFillColor(sf::Color::Green);
 
 	auto hitbox = this->owner->getHitbox();
 	offset.x = hitbox.getPosition().x + hitbox.getSize().x / 2 - this->healthBar.getSize().x / 2;
@@ -36,20 +36,23 @@ void Stat::render(sf::RenderWindow& window)
 	window.draw(this->healthBar);
 }
 
-void Stat::takeDamage(float amount)
-{
-    health -= amount;
-    if (health > maxHealth) health = maxHealth; // Không vượt quá max
-    if (health < 0) health = 0;
+void Stat::takeDamage(float amount)  
+{  
+    health -= amount;  
+    if (health > maxHealth) health = maxHealth; // Không vượt quá max  
+    if (health < 0) health = 0;  
 
-	float percent = health / maxHealth;
-	if (percent < 0) percent = 0;
-	healthBar.setSize(sf::Vector2f(100 * percent, 20));
+    float percent = health / maxHealth;  
+    if (percent < 0) percent = 0;  
+    healthBar.setSize(sf::Vector2f(50 * percent, 10));  
+	std::cout << "Health remain: " << health << std::endl;  
+
+    
 }
 
 float Stat::getHealth()
 {
-	return this->health;
+	return this->health;	
 }
 
 float Stat::getDamage()

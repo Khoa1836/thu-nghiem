@@ -9,7 +9,10 @@ ShieldItem::ShieldItem(sf::Vector2f pos, float duration)
     setTag("shield");
 }
 
-float ShieldItem::getShieldDuration() const { return shieldDuration; }
+float ShieldItem::getShieldDuration() const 
+{
+    return shieldDuration; 
+}
 
 void ShieldItem::update(float deltaTime) {
 

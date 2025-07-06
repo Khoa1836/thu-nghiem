@@ -5,7 +5,6 @@
 #include "ShooterEnemy.h"
 #include "ShooterFireComponent.h"
 #include "CollideWithEnemyBullet.h"
-
 #include "PlayerStat.h"
 #include "PlayerCollectGemComponent.h"
 #include "PlayerItemCollector.h"
@@ -22,11 +21,10 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer(
     player->addComponent(std::make_shared<CollideWithBounds>(player));
     player->addComponent(std::make_shared<Stat>(player, 100, 50));
 
-    auto fireComponent = std::make_shared<FireComponent>(
-        player, gameObjects,toAddObjects,0.5f,sf::Vector2f(0.f,-600.f));
+    // REMOVE n_bulletVelocity argument
+    player->addComponent(std::make_shared<FireComponent>(
+        player, gameObjects, toAddObjects, 0.5f));
 
-    player->addComponent(fireComponent);
-    player->addComponent(std::make_shared<CollideWithEnemyBullet>(player, gameObjects));
     player->addComponent(std::make_shared<PlayerCollectGemComponent>(player, gameObjects));
     player->addComponent(std::make_shared<PlayerItemCollector>(player, gameObjects));
 
@@ -40,20 +38,17 @@ std::shared_ptr<Enemies> GameObjectFactory::createEnemy(
     std::vector<std::shared_ptr<GameObject>>* gameObjects, 
     std::vector<std::shared_ptr<GameObject>>* toAddObjects)
 {
-	auto enemies = std::make_shared<Enemies>();
-    enemies->setTag("enemies");
+	auto default_enemies = std::make_shared<Enemies>();
+    default_enemies->setTag("default_enemies");
 
 	// add enemy component 
-	enemies->addComponent(std::make_shared<CollideWithBounds>(enemies));
-	enemies->addComponent(std::make_shared<Stat>(enemies, 100, 20));
-	enemies->addComponent(std::make_shared<DamageOnContact>(enemies, player, 10.f, 1.0f));
-	enemies->addComponent(std::make_shared<FollowTarget>(enemies, player, 80.f));
-	enemies->addComponent(std::make_shared<NoOverlapEnemiesOnly>(enemies, gameObjects));
-    enemies->addComponent(std::make_shared<CollideWithBullet>(enemies, gameObjects, 10, toAddObjects));
-    /*enemies->addComponent(std::make_shared<CollideWithBullet>(enemies, gameObjects, 10));*/
-
-    enemies->addComponent(std::make_shared<CollideWithBullet>(enemies, gameObjects, 10.f, toAddObjects));
-	return enemies;
+    default_enemies->addComponent(std::make_shared<CollideWithBounds>(default_enemies));
+    default_enemies->addComponent(std::make_shared<Stat>(default_enemies, 200, 20));
+    default_enemies->addComponent(std::make_shared<DamageOnContact>(default_enemies, player, 10.f, 1.0f));
+    default_enemies->addComponent(std::make_shared<FollowTarget>(default_enemies, player, 80.f));
+    default_enemies->addComponent(std::make_shared<NoOverlapEnemiesOnly>(default_enemies, gameObjects));
+    default_enemies->addComponent(std::make_shared<CollideWithBullet>(default_enemies, gameObjects, 10.f, toAddObjects));
+	return default_enemies;
 }
 
 std::shared_ptr<ShooterEnemy> GameObjectFactory::createShooterEnemy(
@@ -62,22 +57,19 @@ std::shared_ptr<ShooterEnemy> GameObjectFactory::createShooterEnemy(
     std::vector<std::shared_ptr<GameObject>>* toAddObjects)
 {
     auto shooter = std::make_shared<ShooterEnemy>();
-    shooter->setTag("enemies");
+    shooter->setTag("shooter_enemies");
 
     shooter->addComponent(std::make_shared<CollideWithBounds>(shooter));
     shooter->addComponent(std::make_shared<Stat>(shooter, 100, 20));
     shooter->addComponent(std::make_shared<DamageOnContact>(shooter, player, 10.f, 1.0f));
     shooter->addComponent(std::make_shared<FollowTarget>(shooter, player, 80.f));
     shooter->addComponent(std::make_shared<NoOverlapEnemiesOnly>(shooter, gameObjects));
-    shooter->addComponent(std::make_shared<CollideWithBullet>(shooter, gameObjects, 10, toAddObjects));
     shooter->addComponent(std::make_shared<CollideWithBullet>(shooter, gameObjects, 10.f, toAddObjects));
     shooter->addComponent(std::make_shared<ShooterFireComponent>(
         shooter,
         gameObjects,
         toAddObjects,
-        2.0f, // cooldown
-        sf::Vector2f(0.f, 600.f) // hướng mặc định, sẽ được tính lại về phía player
-    ));
+        1.5f));
     return shooter;
 }
 

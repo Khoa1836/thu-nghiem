@@ -63,7 +63,7 @@ void ScenePause::render(sf::RenderWindow& window) {
         oss << seconds;
         sf::Text text(oss.str(), font, 28);
         text.setFillColor(sf::Color::White);
-        text.setPosition(540, 180);
+        text.setPosition(555, 180);
         window.draw(text);
     }
 

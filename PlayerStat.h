@@ -3,6 +3,14 @@
 #include <iostream>
 
 class PlayerStat : public Component {
+private:
+    float exp = 0.f;
+    int level = 1;
+    float expToNextLevel = 100.f;
+public:
+    PlayerStat(std::shared_ptr<GameObject> owner) : Component(owner) {}
+
+    void addExp(float amount);
     int exp = 0;
     int level = 0;
     int expToNextLevel = 100;

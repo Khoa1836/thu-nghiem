@@ -28,7 +28,7 @@ void CollideWithBullet::update(float deltaTime)
         }
         for (auto& enemies : *gameObjects)
         {
-            if (enemies->getTag() != "enemies" || enemies->isDestroyed()) continue;
+            if ((enemies->getTag() != "default_enemies" && enemies->getTag() != "shooter_enemies") || enemies->isDestroyed()) continue;
             if (bullet->getHitbox().getGlobalBounds().intersects(enemies->getHitbox().getGlobalBounds()))
             {
                 auto stat = enemies->getComponent<Stat>();
@@ -38,17 +38,19 @@ void CollideWithBullet::update(float deltaTime)
                     if (stat->getHealth() <= 0.0f)
                     {
                         toAddObjects->push_back(std::make_shared<Gem>(enemies->getHitbox().getPosition()));
-						int r = rand() % 3;
-						if (r == 0)
-							toAddObjects->push_back(std::make_shared<HealItem>(enemies->getHitbox().getPosition()));
-						else if (r == 1)
-							toAddObjects->push_back(std::make_shared<ShieldItem>(enemies->getHitbox().getPosition()));
-						else
-							toAddObjects->push_back(std::make_shared<SpeedItem>(enemies->getHitbox().getPosition()));
-                        enemies->markForDestroy();
+						int r = rand() % 50;
+                        if (r == 0)
+                            toAddObjects->push_back(std::make_shared<HealItem>(enemies->getHitbox().getPosition()));
+                        else if (r == 1)
+                            toAddObjects->push_back(std::make_shared<ShieldItem>(enemies->getHitbox().getPosition()));
+                        else if (r == 5)
+                            toAddObjects->push_back(std::make_shared<SpeedItem>(enemies->getHitbox().getPosition()));
+                        else
+                            toAddObjects->push_back(std::make_shared<Gem>(enemies->getHitbox().getPosition()));
+                            enemies->markForDestroy();
                     }
+                            bullet->markForDestroy();
                 }
-                bullet->markForDestroy();
                 break;
             }
         }
