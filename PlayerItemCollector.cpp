@@ -68,3 +68,53 @@ void PlayerItemCollector::update(float deltaTime)
         }
     }
 }
+
+void PlayerItemCollector::render(sf::RenderWindow& window)
+{
+    // Lấy vị trí player
+    sf::Vector2f basePos = owner->getHitbox().getPosition();
+    float barWidth = 100.f;
+    float barHeight = 10.f;
+    float spacing = 5.f;
+    int barCount = 0;
+
+    // Shield bar
+    if (shieldActive && shieldDuration > 0.f) {
+        float percent = 1.f - (shieldTimer / shieldDuration);
+        if (percent < 0.f) percent = 0.f;
+        sf::RectangleShape shieldBar(sf::Vector2f(barWidth * percent, barHeight));
+        shieldBar.setFillColor(sf::Color::Cyan);
+        shieldBar.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        window.draw(shieldBar);
+
+        // Viền
+        sf::RectangleShape border(sf::Vector2f(barWidth, barHeight));
+        border.setFillColor(sf::Color::Transparent);
+        border.setOutlineColor(sf::Color::White);
+        border.setOutlineThickness(1.f);
+        border.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        window.draw(border);
+
+        barCount++;
+    }
+
+    // Speed bar
+    if (speedActive && speedDuration > 0.f) {
+        float percent = 1.f - (speedTimer / speedDuration);
+        if (percent < 0.f) percent = 0.f;
+        sf::RectangleShape speedBar(sf::Vector2f(barWidth * percent, barHeight));
+        speedBar.setFillColor(sf::Color::Yellow);
+        speedBar.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        window.draw(speedBar);
+
+        // Viền
+        sf::RectangleShape border(sf::Vector2f(barWidth, barHeight));
+        border.setFillColor(sf::Color::Transparent);
+        border.setOutlineColor(sf::Color::White);
+        border.setOutlineThickness(1.f);
+        border.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        window.draw(border);
+
+        barCount++;
+    }
+}
