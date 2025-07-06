@@ -9,6 +9,8 @@ public:
     virtual ~Enemies() = default;
     void update(float deltaTime);
     virtual void render(sf::RenderWindow& window) override;
+    void onSpawn() override;
+    void onDestroy() override;
 
 protected:
     sf::RectangleShape healthBar;

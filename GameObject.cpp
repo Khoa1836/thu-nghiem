@@ -63,3 +63,18 @@ std::string GameObject::getTag()
 {
 	return this->tag;
 }
+
+void GameObject::markForDestroy() 
+{
+	destroyed = true; 
+}
+
+void GameObject::revive()
+{
+	 destroyed = false;
+}
+
+bool GameObject::isDestroyed()
+{
+	 return destroyed; 
+}

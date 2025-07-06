@@ -15,7 +15,7 @@ SelectLevelScene::SelectLevelScene() {
     ));
     
     gameObjects.push_back( std::make_shared<Button>(
-        "Back 2", 300, 600, sf::Vector2f(150.f, 50.f),
+        "Back", 100, 600, sf::Vector2f(50.f, 50.f),
         std::make_shared<SwitchSceneCommand>([]() {
             return std::make_shared<MenuScene>();
             })

@@ -43,7 +43,7 @@ std::shared_ptr<Enemies> GameObjectFactory::createEnemy(
 
 	// add enemy component 
     default_enemies->addComponent(std::make_shared<CollideWithBounds>(default_enemies));
-    default_enemies->addComponent(std::make_shared<Stat>(default_enemies, 100, 20));
+    default_enemies->addComponent(std::make_shared<Stat>(default_enemies, 200, 20));
     default_enemies->addComponent(std::make_shared<DamageOnContact>(default_enemies, player, 10.f, 1.0f));
     default_enemies->addComponent(std::make_shared<FollowTarget>(default_enemies, player, 80.f));
     default_enemies->addComponent(std::make_shared<NoOverlapEnemiesOnly>(default_enemies, gameObjects));
@@ -69,7 +69,7 @@ std::shared_ptr<ShooterEnemy> GameObjectFactory::createShooterEnemy(
         shooter,
         gameObjects,
         toAddObjects,
-        0.5f));
+        1.5f));
     return shooter;
 }
 

@@ -11,6 +11,12 @@ velocity(velocity), damage(damage)
 void Bullet::update(float deltaTime)
 {
 	hitbox.move(this->velocity * deltaTime);
+
+	//giai phong cac vien dan neu cham vao thanh
+	sf::Vector2f pos = getHitbox().getPosition();
+	if (pos.x < 0 || pos.x > WINDOW_WIDTH || pos.y < 0 || pos.y > WINDOW_HEIGHT) {
+		markForDestroy();
+	}
 }
 
 void Bullet::render(sf::RenderWindow& window) 

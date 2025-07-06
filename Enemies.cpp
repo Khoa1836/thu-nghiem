@@ -1,4 +1,4 @@
-#include "Enemies.h"
+﻿#include "Enemies.h"
 #include "Stat.h" // Ensure you have this include if you use Stat
 
 Enemies::Enemies()
@@ -27,7 +27,13 @@ void Enemies::render(sf::RenderWindow& window) {
         health = static_cast<float>(stat->getMaxHealth());
         maxHealth = health; // update maxHealth if Stat changes
     }
-    float percent = (health > 0.f) ? (currentHealth / health) : 0.f;
+    float percent;
+    if (health > 0.f) {
+        percent = currentHealth / health;
+    }
+    else {
+        percent = 0.f;
+    }
     healthBar.setSize(sf::Vector2f(hitbox.getSize().x * percent, 5.f));
     healthBar.setPosition(hitbox.getPosition().x, hitbox.getPosition().y - 8.f);
 
@@ -37,5 +43,19 @@ void Enemies::render(sf::RenderWindow& window) {
 
 void Enemies::update(float deltaTime) {
     updateComponents(deltaTime);
+}
+
+void Enemies::onSpawn() {
+    // Reset trạng thái của enemy khi spawn
+    auto stat = getComponent<Stat>();
+    if (stat) {
+        stat->takeDamage(-stat->getMaxHealth()); // Hồi đầy máu
+    }
+    setTag("default_enemies"); // Đặt lại tag nếu cần
+}
+
+void Enemies::onDestroy() {
+    // Xử lý logic khi enemy bị phá hủy
+    std::cout << "Enemy destroyed!" << std::endl;
 }
 

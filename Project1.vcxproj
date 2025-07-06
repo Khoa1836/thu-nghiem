@@ -102,6 +102,7 @@
     <ClInclude Include="SelectLevelScene.h" />
     <ClInclude Include="ShieldItem.h" />
     <ClInclude Include="ShooterEnemy.h" />
+    <ClInclude Include="ShooterFireComponent.h" />
     <ClInclude Include="SpeedItem.h" />
     <ClInclude Include="Stat.h" />
     <ClInclude Include="SwitchSceneCommand.h" />

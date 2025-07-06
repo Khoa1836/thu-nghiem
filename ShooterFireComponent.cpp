@@ -43,7 +43,5 @@ void ShooterFireComponent::update(float deltaTime)
         auto bullet = std::make_shared<Bullet>(velocity, pos, bulletDamage);
         bullet->setTag("enemy_bullet");
         toAddObjects->push_back(bullet);
-
-        std::cout << "ShooterEnemy fired a bullet!\n";
     }
 }

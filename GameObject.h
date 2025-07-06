@@ -1,4 +1,4 @@
-// GameObject.h
+﻿// GameObject.h
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -31,8 +31,13 @@ public:
     void setTag(const std::string n_tag); 
     std::string getTag();
 
-    void markForDestroy() { destroyed = true; }
-    bool isDestroyed() const { return destroyed; }
+    void markForDestroy();
+    void revive();
+    bool isDestroyed();
+
+    // Virtual methods for handling spawn and destruction
+    virtual void onSpawn() {}
+    virtual void onDestroy() {}
 };
 
 template<class T>

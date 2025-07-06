@@ -113,12 +113,6 @@
     <ClCompile Include="CollideWithEnemyBullet.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="HealItem.cpp" />
-    <ClCompile Include="PlayerItemCollector.cpp" />
-    <ClCompile Include="ShieldItem.cpp" />
-    <ClCompile Include="SpeedItem.cpp" />
-    <ClCompile Include="Gem.cpp" />
-    <ClCompile Include="PlayerCollectGemComponent.cpp" />
     <ClCompile Include="SceneLose.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -131,9 +125,29 @@
     <ClCompile Include="GameUtils.cpp">
       <Filter>No Category</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStat.cpp" />
     <ClCompile Include="Clock.cpp">
       <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Gem.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="HealItem.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ShieldItem.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedItem.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStat.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCollectGemComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerItemCollector.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +196,6 @@
     <ClInclude Include="GameManager.h">
       <Filter>No Category</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="CollideWithBounds.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -222,13 +235,6 @@
     <ClInclude Include="CollideWithEnemyBullet.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="HealItem.h" />
-    <ClInclude Include="PlayerItemCollector.h" />
-    <ClInclude Include="ShieldItem.h" />
-    <ClInclude Include="SpeedItem.h" />
-    <ClInclude Include="Gem.h" />
-    <ClInclude Include="PlayerCollectGemComponent.h" />
-    <ClInclude Include="PlayerStat.h" />
     <ClInclude Include="SceneLose.h">
       <Filter>Scenes</Filter>
     </ClInclude>
@@ -243,6 +249,31 @@
     </ClInclude>
     <ClInclude Include="Clock.h">
       <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Gem.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="HealItem.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShieldItem.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedItem.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStat.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerItemCollector.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCollectGemComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="ShooterFireComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
