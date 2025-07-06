@@ -17,10 +17,10 @@
 #include <sstream>
 #include <SFML/Graphics.hpp>
 #include "GameUtils.h"
+#include "PlayerStat.h"
 
 sf::Font GamePlayScene::font;
 bool GamePlayScene::fontLoaded = false;
-#include "PlayerStat.h"
 
 //check player is alive or not, player died if health <= 0;
 bool GamePlayScene::alivePlayer()
@@ -200,7 +200,7 @@ void GamePlayScene::render(sf::RenderWindow& window) {
         window.draw(text);
     }
 
-    auto player = findPlayer();
+    auto player = findPlayer(gameObjects);
     if (fontLoaded && player) {
         auto playerStat = player->getComponent<PlayerStat>();
         if (playerStat) {

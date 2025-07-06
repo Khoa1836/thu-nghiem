@@ -84,15 +84,15 @@ void PlayerItemCollector::render(sf::RenderWindow& window)
         if (percent < 0.f) percent = 0.f;
         sf::RectangleShape shieldBar(sf::Vector2f(barWidth * percent, barHeight));
         shieldBar.setFillColor(sf::Color::Cyan);
-        shieldBar.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        shieldBar.setPosition(sf::Vector2f (1100,20));
         window.draw(shieldBar);
 
         // Viền
         sf::RectangleShape border(sf::Vector2f(barWidth, barHeight));
         border.setFillColor(sf::Color::Transparent);
         border.setOutlineColor(sf::Color::White);
-        border.setOutlineThickness(1.f);
-        border.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        border.setOutlineThickness(5.f);
+        border.setPosition(sf::Vector2f(1100, 20));
         window.draw(border);
 
         barCount++;
@@ -104,7 +104,7 @@ void PlayerItemCollector::render(sf::RenderWindow& window)
         if (percent < 0.f) percent = 0.f;
         sf::RectangleShape speedBar(sf::Vector2f(barWidth * percent, barHeight));
         speedBar.setFillColor(sf::Color::Yellow);
-        speedBar.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        speedBar.setPosition(sf::Vector2f(1100, 30));
         window.draw(speedBar);
 
         // Viền
@@ -112,7 +112,7 @@ void PlayerItemCollector::render(sf::RenderWindow& window)
         border.setFillColor(sf::Color::Transparent);
         border.setOutlineColor(sf::Color::White);
         border.setOutlineThickness(1.f);
-        border.setPosition(basePos.x, basePos.y - 30.f - barCount * (barHeight + spacing));
+        border.setPosition(sf::Vector2f(1100, 30));
         window.draw(border);
 
         barCount++;

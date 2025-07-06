@@ -27,7 +27,7 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer(
 
     player->addComponent(std::make_shared<PlayerCollectGemComponent>(player, gameObjects));
     player->addComponent(std::make_shared<PlayerItemCollector>(player, gameObjects));
-
+	player->addComponent(std::make_shared<CollideWithEnemyBullet>(player, gameObjects));
     return player;
 }
 

@@ -38,7 +38,7 @@ void CollideWithBullet::update(float deltaTime)
                     if (stat->getHealth() <= 0.0f)
                     {
                         toAddObjects->push_back(std::make_shared<Gem>(enemies->getHitbox().getPosition()));
-						int r = rand() % 50;
+						int r = rand() % 20;
                         if (r == 0)
                             toAddObjects->push_back(std::make_shared<HealItem>(enemies->getHitbox().getPosition()));
                         else if (r == 1)

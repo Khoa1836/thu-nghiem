@@ -3,36 +3,18 @@
 #include <iostream>
 
 class PlayerStat : public Component {
-private:
-    float exp = 0.f;
-    int level = 1;
-    float expToNextLevel = 100.f;
 public:
-    PlayerStat(std::shared_ptr<GameObject> owner) : Component(owner) {}
-
-    void addExp(float amount);
-    int exp = 0;
-    int level = 0;
-    int expToNextLevel = 100;
+    int exp;
+    int level ;
+    int expToNextLevel ;
 public:
-    PlayerStat(std::shared_ptr<GameObject> owner) : Component(owner) {}
+    PlayerStat(std::shared_ptr<GameObject> owner);
 
-    void addExp(int amount) {
-        exp += amount;
-        while (exp >= expToNextLevel) {
-            exp -= expToNextLevel;
-            level++;
-            std::cout << "Level up! New level: " << level << std::endl;
-            expToNextLevel = static_cast<int>(expToNextLevel * 1.2f);
-        }
-    }
-
+    void addExp(int amount);
     int getExp() const { return exp; }
     int getLevel() const { return level; }
     int getExpToNextLevel() const { return expToNextLevel; }
 
-    void update(float) override {
-        addExp(0); // luôn kiểm tra lên level mỗi frame
-    }
+    void update(float) override ;
     void render(sf::RenderWindow&) override {}
 };
