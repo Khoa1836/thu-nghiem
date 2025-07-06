@@ -20,16 +20,7 @@
 
 sf::Font GamePlayScene::font;
 bool GamePlayScene::fontLoaded = false;
-
-// Hàm tiện ích để tìm player theo tag
-//std::shared_ptr<GameObject> GamePlayScene::findPlayer() {
-//    for (auto& obj : gameObjects) {
-//        if (obj->getTag() == "player") {
-//            return obj;
-//        }
-//    }
-//    return nullptr;
-//}
+#include "PlayerStat.h"
 
 //check player is alive or not, player died if health <= 0;
 bool GamePlayScene::alivePlayer()
@@ -207,5 +198,75 @@ void GamePlayScene::render(sf::RenderWindow& window) {
         text.setFillColor(sf::Color::Green);
         text.setPosition(10, 10); // Góc trên bên trái
         window.draw(text);
+    }
+
+    auto player = findPlayer();
+    if (fontLoaded && player) {
+        auto playerStat = player->getComponent<PlayerStat>();
+        if (playerStat) {
+            // Kích thước và vị trí thanh exp
+            float barWidth = 400.f;
+            float barHeight = 22.f;
+            float windowWidth = window.getSize().x;
+            float barX = (windowWidth - barWidth) / 2.f;
+            float barY = 16.f;
+
+            // Level box
+            float levelBoxWidth = 60.f;
+            float levelBoxHeight = barHeight + 8.f;
+            float levelBoxX = barX - levelBoxWidth - 10.f;
+            float levelBoxY = barY - 4.f;
+
+            // Vẽ khung level
+            sf::RectangleShape levelBox(sf::Vector2f(levelBoxWidth, levelBoxHeight));
+            levelBox.setFillColor(sf::Color(40, 40, 40));
+            levelBox.setOutlineColor(sf::Color::White);
+            levelBox.setOutlineThickness(2.f);
+            levelBox.setPosition(levelBoxX, levelBoxY);
+            window.draw(levelBox);
+
+            // Vẽ số level
+            std::ostringstream oss;
+            oss << "Lv " << playerStat->getLevel();
+            sf::Text levelText(oss.str(), font, 22);
+            levelText.setFillColor(sf::Color::White);
+            // Căn giữa trong khung
+            sf::FloatRect textRect = levelText.getLocalBounds();
+            levelText.setPosition(
+                levelBoxX + (levelBoxWidth - textRect.width) / 2.f,
+                levelBoxY + (levelBoxHeight - textRect.height) / 2.f - 4.f
+            );
+            window.draw(levelText);
+
+            // Hiển thị thanh exp
+            int exp = playerStat->getExp();
+            int expToNext = playerStat->getExpToNextLevel();
+            float percent = static_cast<float>(exp) / expToNext;
+
+            // Khung nền exp
+            sf::RectangleShape expBarBg(sf::Vector2f(barWidth, barHeight));
+            expBarBg.setFillColor(sf::Color(50, 50, 50));
+            expBarBg.setPosition(barX, barY);
+
+            // Thanh exp
+            sf::RectangleShape expBar(sf::Vector2f(barWidth * percent, barHeight));
+            expBar.setFillColor(sf::Color(255, 165, 0)); // Màu cam
+            expBar.setPosition(barX, barY);
+
+            window.draw(expBarBg);
+            window.draw(expBar);
+
+            // Text exp
+            std::ostringstream expText;
+            expText << static_cast<int>(exp) << " / " << static_cast<int>(expToNext);
+            sf::Text expValue(expText.str(), font, 16);
+            expValue.setFillColor(sf::Color::White);
+            sf::FloatRect expRect = expValue.getLocalBounds();
+            expValue.setPosition(
+                barX + (barWidth - expRect.width) / 2.f,
+                barY + (barHeight - expRect.height) / 2.f - 2.f
+            );
+            window.draw(expValue);
+        }
     }
 }
