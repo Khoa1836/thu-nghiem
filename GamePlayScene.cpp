@@ -248,6 +248,7 @@ void GamePlayScene::render(sf::RenderWindow& window) {
                 barY + (barHeight - expRect.height) / 2.f - 2.f
             );
             window.draw(expValue);
+            //push lai ne  
         }
     }
 }
