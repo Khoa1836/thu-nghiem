@@ -3,7 +3,7 @@
 #include "Stat.h"
 #include "BulletOfEnemy.h"
 #include <memory>
-#include "playeritemcollector.h"
+#include "PlayerShieldCollector.h"
 
 CollideWithEnemyBullet::CollideWithEnemyBullet(
     std::shared_ptr<GameObject> owner,
@@ -26,8 +26,8 @@ void CollideWithEnemyBullet::update(float deltaTime)
             auto bulletPtr = std::dynamic_pointer_cast<BulletOfEnemy>(bullet);
             if (bulletPtr) damage = bulletPtr->getDamage();
 
-            auto collector = owner->getComponent<PlayerItemCollector>();
-            if (collector && collector->isShieldActive())
+            auto shieldCollector = owner->getComponent<PlayerShieldCollector>();
+            if (shieldCollector && shieldCollector->isShieldActive())
             {
                 // Bỏ qua sát thương
             }

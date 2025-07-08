@@ -18,6 +18,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameUtils.h"
 #include "PlayerStat.h"
+#include "PlayerBuffBar.h"
 
 sf::Font GamePlayScene::font;
 bool GamePlayScene::fontLoaded = false;
@@ -99,6 +100,9 @@ GamePlayScene::GamePlayScene() {
     auto player = GameObjectFactory::createPlayer(&gameObjects, &toAddObjects);
     player->setTag("player"); // Đảm bảo player có tag là "player"
     gameObjects.push_back(player);
+
+    // Khởi tạo PlayerBuffBar
+    playerBuffBar = std::make_unique<PlayerBuffBar>(player, font);
 
     spawnRandomEnemy(false); // Use helper for initial enemy
 }
@@ -269,4 +273,7 @@ void GamePlayScene::render(sf::RenderWindow& window) {
             window.draw(expValue);
         }
     }
+
+    // Vẽ buff bar
+    if (playerBuffBar) playerBuffBar->render(window);
 }

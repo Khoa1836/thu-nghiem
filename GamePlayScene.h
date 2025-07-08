@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "SceneLose.h" // Ensure SceneLose is included
 #include "Clock.h" // Include Clock
+#include "PlayerBuffBar.h"
 #include <memory>
 #include <vector>
 
@@ -36,4 +37,6 @@ private:
     std::shared_ptr<Clock> clockInGame; // Thay đổi từ ClockInGame sang Clock
     static sf::Font font;
     static bool fontLoaded;
+
+    std::unique_ptr<PlayerBuffBar> playerBuffBar;
 };

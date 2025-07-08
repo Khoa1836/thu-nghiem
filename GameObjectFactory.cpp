@@ -7,7 +7,9 @@
 #include "CollideWithEnemyBullet.h"
 #include "PlayerStat.h"
 #include "PlayerCollectGemComponent.h"
-#include "PlayerItemCollector.h"
+#include "PlayerHealCollector.h"
+#include "PlayerShieldCollector.h"
+#include "PlayerSpeedCollector.h"
 
 
 std::shared_ptr<Player> GameObjectFactory::createPlayer(
@@ -26,7 +28,9 @@ std::shared_ptr<Player> GameObjectFactory::createPlayer(
         player, gameObjects, toAddObjects, 0.5f));
 
     player->addComponent(std::make_shared<PlayerCollectGemComponent>(player, gameObjects));
-    player->addComponent(std::make_shared<PlayerItemCollector>(player, gameObjects));
+    player->addComponent(std::make_shared<PlayerHealCollector>(player, gameObjects));
+    player->addComponent(std::make_shared<PlayerShieldCollector>(player, gameObjects));
+    player->addComponent(std::make_shared<PlayerSpeedCollector>(player, gameObjects));
 	player->addComponent(std::make_shared<CollideWithEnemyBullet>(player, gameObjects));
     return player;
 }
