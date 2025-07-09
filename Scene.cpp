@@ -7,5 +7,6 @@ void Scene::update(float deltaTime) {
 }
 
 void Scene::render(sf::RenderWindow& window) {
+    window.setView(this->camera.getView(window.getSize()));
     for (auto& obj : gameObjects) obj->render(window);
 }

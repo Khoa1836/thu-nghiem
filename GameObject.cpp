@@ -24,6 +24,11 @@ void GameObject::updateComponents(float deltaTime)
 	}
 }
 
+sf::Vector2f GameObject::getOrigin() const
+{
+	return this->hitbox.getPosition() + this->hitbox.getSize() / 2.f;
+}
+
 void GameObject::move(sf::Vector2f offset)
 {
 	this->hitbox.move(offset);

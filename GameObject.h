@@ -17,6 +17,8 @@ public:
     void addComponent(std::shared_ptr<Component> component);
 	void updateComponents(float deltaTime);
 
+	sf::Vector2f getOrigin() const;
+
     template<class T>
     std::shared_ptr<T> getComponent();
 

@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CollideWithBounds.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Dog.cpp" />
     <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="FollowTarget.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -33,6 +37,7 @@
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="KeyboardMove.cpp" />
     <ClCompile Include="MenuScene.cpp" />
+    <ClCompile Include="MoveForward.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PrintCommand.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -42,11 +47,15 @@
     <ClCompile Include="SwitchSceneCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="CollideWithBounds.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Dog.h" />
     <ClInclude Include="Enemies.h" />
+    <ClInclude Include="FollowTarget.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -56,6 +65,7 @@
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="KeyboardMove.h" />
     <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="MoveForward.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PrintCommand.h" />
     <ClInclude Include="Scene.h" />

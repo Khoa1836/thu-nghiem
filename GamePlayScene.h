@@ -7,4 +7,7 @@
 class GamePlayScene : public Scene {
 public:
     GamePlayScene();
+    bool holding = false;
+
+    void update(float deltaTime) override;
 };

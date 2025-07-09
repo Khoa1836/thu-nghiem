@@ -5,16 +5,18 @@
 #include "Scene.h"
 
 class GameManager {
-private:
+public:
     std::shared_ptr<Scene> currentScene;
     GameManager();
     GameManager(const GameManager&) = delete;
     GameManager& operator=(const GameManager&) = delete;
 
+    std::shared_ptr<Player> currentPlayer = nullptr;
+    std::vector<std::shared_ptr<Dog>> enemies;
+
     bool holding = false;
     bool justPressed = false;
 
-public:
     ~GameManager();
     static GameManager& getInstance();
         

@@ -21,8 +21,9 @@ void Game::pollEvent()
 
 void Game::updateMousePosition()
 {
-	sf::Vector2i mousePos = sf::Mouse::getPosition(*this->window);
-	mousePosition = sf::Vector2f(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+	auto mousePosWindow = sf::Mouse::getPosition(*this->window);
+	auto mousePosView = this->window->mapPixelToCoords(mousePosWindow);
+	mousePosition = mousePosView;
 }
 
 Game::Game()
