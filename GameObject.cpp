@@ -29,6 +29,17 @@ sf::Vector2f GameObject::getOrigin() const
 	return this->hitbox.getPosition() + this->hitbox.getSize() / 2.f;
 }
 
+void GameObject::onCollisionEnter(std::shared_ptr<GameObject> other)
+{
+	for (const auto& component : this->components)
+	{
+		if (component)
+		{
+			component->onCollisionEnter(other);
+		}
+	}
+}
+
 void GameObject::move(sf::Vector2f offset)
 {
 	this->hitbox.move(offset);

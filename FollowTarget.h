@@ -17,4 +17,5 @@ public:
 	}
 
 	void update(float deltaTime) override;
+	void onCollisionEnter(std::shared_ptr<GameObject> other) override;
 };

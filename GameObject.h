@@ -17,7 +17,10 @@ public:
     void addComponent(std::shared_ptr<Component> component);
 	void updateComponents(float deltaTime);
 
-	sf::Vector2f getOrigin() const;
+    bool needDeleted = false;
+
+    sf::Vector2f getOrigin() const;
+    void onCollisionEnter(std::shared_ptr<GameObject> other);
 
     template<class T>
     std::shared_ptr<T> getComponent();

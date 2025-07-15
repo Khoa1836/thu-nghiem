@@ -35,7 +35,6 @@ std::shared_ptr<Dog> GameObjectFactory::createDog()
 	//dog->addComponent(std::make_shared<CollideWithBounds>(dog));
 	dog->addComponent(std::make_shared<Stat>(dog, 100, 20));
 
-	GameManager::getInstance().enemies.push_back(dog);
 	return dog;
 }
 
@@ -45,11 +44,12 @@ std::shared_ptr<Bullet> GameObjectFactory::createBullet(float x, float y)
 
 	auto player = GameManager::getInstance().currentPlayer;
 	// get enemy closest to player
-	auto enemy = GameManager::getInstance().enemies[0];
-	float distance = hypot(enemy->getHitbox().getPosition().x - player->getHitbox().getPosition().x,
-		enemy->getHitbox().getPosition().y - player->getHitbox().getPosition().y);
-	for (auto i : GameManager::getInstance().enemies)
+	std::shared_ptr<GameObject> enemy = nullptr;
+	float distance = 1e9;
+	for (auto i : GameManager::getInstance().getCurrentScene()->getGameObjects())
 	{
+		if (!isType<Dog>(i)) continue;
+
 		float tmp = hypot(i->getHitbox().getPosition().x - player->getHitbox().getPosition().x,
 			i->getHitbox().getPosition().y - player->getHitbox().getPosition().y);
 		if (tmp < distance)
@@ -57,6 +57,13 @@ std::shared_ptr<Bullet> GameObjectFactory::createBullet(float x, float y)
 			distance = tmp;
 			enemy = i;
 		}
+	}
+
+	if (enemy == nullptr)
+	{
+		enemy = std::make_shared<GameObject>();
+		// set random position for target
+		enemy->getHitbox().setPosition(rand() % 10000, rand() % 10000); // Assuming a window size of 800x600
 	}
 
 	bullet->addComponent(std::make_shared<FollowTarget>(bullet, enemy, 400.f));

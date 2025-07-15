@@ -17,4 +17,8 @@ public:
     virtual ~Scene() = default;
     virtual void update(float deltaTime);
     virtual void render(sf::RenderWindow& window);
+
+	const std::vector<std::shared_ptr<GameObject>>& getGameObjects() const {
+		return gameObjects;
+	}
 };

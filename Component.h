@@ -15,6 +15,8 @@ public:
     virtual ~Component() = default;
     virtual void update(float deltaTime) = 0;
     virtual void render(sf::RenderWindow& window) {}
+	virtual void onCollisionEnter(std::shared_ptr<GameObject> other) {}
+
 };
 
 // Component Pattern for game objects' behavior

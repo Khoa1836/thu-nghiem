@@ -19,3 +19,15 @@ void FollowTarget::update(float deltaTime)
 		owner->move(direction * speed * deltaTime); // Move the owner towards the target
 	}
 }
+
+#include <iostream>
+#include "Dog.h"
+#include "Bullet.h"
+void FollowTarget::onCollisionEnter(std::shared_ptr<GameObject> other)
+{
+	if (isType<Bullet>(this->owner) && isType<Dog>(other))
+	{
+		other->needDeleted = true;
+		this->owner->needDeleted = true;
+	}
+}
