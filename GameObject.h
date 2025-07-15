@@ -4,11 +4,16 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Component.h"
+#include "Animation.h"
 
 class GameObject {
 protected:
     sf::RectangleShape hitbox;
+    sf::Sprite sprite;
 	std::vector<std::shared_ptr<Component>> components;
+    std::vector<std::shared_ptr<Animation>> animations;
+
+    int currentState = 0;
 
 public:
     GameObject();

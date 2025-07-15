@@ -1,5 +1,6 @@
 ﻿#include "GameObjectFactory.h"
 #include "GameManager.h"
+#include "Assets.h"
 
 std::shared_ptr<Player> GameObjectFactory::createPlayer()
 {

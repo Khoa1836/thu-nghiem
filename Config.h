@@ -3,6 +3,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+#define INT(enumValue) static_cast<int>(enumValue)
+
 template <typename T, typename U>
 bool isType(const std::shared_ptr<U>& ptr) 
 {
@@ -21,3 +23,8 @@ const int WINDOW_WIDTH = 1280;
 const int WINDOW_HEIGHT = 720;
 
 const float PLAYER_SPEED = 400.f;
+
+enum class PLAYER_STATE {
+    IDLE = 0,
+	WALKING,
+};

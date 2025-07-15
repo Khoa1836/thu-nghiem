@@ -11,6 +11,7 @@
 #include "FollowTarget.h"
 #include "Bullet.h"
 #include "MoveForward.h"
+#include "Animation.h"
 
 class GameObjectFactory
 {

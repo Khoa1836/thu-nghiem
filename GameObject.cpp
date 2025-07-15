@@ -53,11 +53,29 @@ sf::RectangleShape& GameObject::getHitbox()
 void GameObject::update(float deltaTime)
 {
 	this->updateComponents(deltaTime);
+
+	//if (1)
+	//{
+	//	currentState = INT(PLAYER_STATE::WALKING);
+	//}
+
+	if (!this->animations.empty())
+	{
+		for (auto& a : animations)
+		{
+			a->update(deltaTime, false);
+			a->setPosition(this->hitbox.getPosition());
+		}
+	}
 }
 
 void GameObject::render(sf::RenderWindow& window)
 {
-	window.draw(this->hitbox);
+	if (!animations.empty()) {
+		animations[currentState]->render(window);
+	}
+	else window.draw(this->hitbox);
+
 	for (const auto& component : this->components)
 	{
 		if (component)
